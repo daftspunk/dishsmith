@@ -17,11 +17,17 @@ You can even print a shopping list to be used at the beginning of each week.
 
 DishSmith is made using [October CMS](http://octobercms.com) and [Bootstrap](http://getbootstrap.com).
 
+## Plugin dependancy
+
+DishSmith comes with its own Plugin for October CMS. 
+You can find this plugin at the [dishsmith-plugin repo](https://github.com/daftspunk/dishsmith-plugin).
+
 ## Installation
 
 1. Install a copy of October CMS
 2. Download this Theme archive as a ZIP
 3. Import the Theme in to October CMS
-4. Get cooking!
+4. Install the [DishSmith Plugin](https://github.com/daftspunk/dishsmith-plugin)
+5. Get cooking!
 
 
