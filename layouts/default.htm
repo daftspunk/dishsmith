@@ -16,28 +16,6 @@ description = "Default layout"
         <!-- Header -->
         <header id="layout-header">
 
-            <!-- Nav -->
-            <nav id="layout-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-                <div class="container">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="/">October Demo</a>
-                    </div>
-                    <div class="collapse navbar-collapse navbar-main-collapse">
-                        <ul class="nav navbar-nav">
-                            <li class="{% if page.url == '/' %}active{% endif %}"><a href="{{ 'home'|page }}">Basic concepts</a></li>
-                            <li class="{% if page.url == '/javascript' %}active{% endif %}"><a href="{{ 'javascript'|page }}">JavaScript framework</a></li>
-                            <li class="{% if page.url == '/plugins' %}active{% endif %}"><a href="{{ 'plugins'|page }}">Plugin components</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
         </header>
 
         <!-- Content -->
@@ -56,6 +34,23 @@ description = "Default layout"
             'assets/javascript/app.js'
         ]|theme }}"></script>
         {% framework %}
+
+        <!-- Fonts -->
+        <script type="text/javascript">
+          WebFontConfig = {
+            google: { families: [ 'Lobster+Two:400,400italic,700,700italic:latin' ] }
+          };
+          (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+              '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+          })(); 
+        </script>
+
 
     </body>
 </html>
