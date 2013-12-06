@@ -3,7 +3,7 @@ Dish Smith 2013
 
 For my wife, Becky :-)
 
-DishSmith is a meal planner created at HACT 2013.
+DishSmith is a meal planner created at [HACT 2013](http://hact.org.au).
 
 ## What is?
 
