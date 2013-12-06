@@ -7,7 +7,7 @@ DishSmith is a meal planner created at [HACT 2013](http://hact.org.au).
 
 ## What is?
 
-DishSmith lets you organise your life for eating. It is based on the premise that eating right requires either **passion** or **planning**.
+DishSmith lets you organise your life for eating. It is a meal planner based on the premise that eating right requires either **passion** or **planning**.
 
 You add your favourite Dishes and Ingredients needed for those dishes. DishSmith will *pepper* these dishes in to a weekly timetable.
 
