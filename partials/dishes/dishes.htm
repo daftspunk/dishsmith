@@ -21,7 +21,10 @@
             <div class="col-xs-8">
                 <h3 class="title">{{ dish.name }}</h3>
                 <div class="normal">
-                    <p>Included in <strong>Week {{ dish.getWeek(loop.index) }}</strong></p>
+                    <ul class="list-inline">
+                        <li><i class="icon-calendar-empty"></i> Week {{ dish.getWeek(loop.index) }}</li>
+                        <li><i class="icon-shopping-cart"></i> {{ dish.ingredients|length }}</li>
+                    </ul>
                 </div>
                 <div class="hover">
                     <a

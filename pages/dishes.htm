@@ -96,9 +96,9 @@ function onModifyDish()
 
     $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->find(post('dish_id'));
     if ($dish) {
-        $this['ingredients'] = $dish->getIngredients();
         $this['dish'] = $dish;
-        $this['ingredientCount'] = $dish->ingredients->count();
+        $this['ingredients'] = $dish->getIngredients();
+        $this['ingredientCount'] = $dish->ingredients()->count();
     }
     else
         $this->onNewDish();
