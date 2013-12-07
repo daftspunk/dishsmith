@@ -3,6 +3,12 @@ url = "/"
 layout = "blank"
 ==
 <?php
+public function onStart()
+{
+    if (Auth::check())
+        return Redirect::to('dishes');
+}
+
 public function onEnter()
 {
     $rules = [

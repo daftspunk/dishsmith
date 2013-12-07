@@ -6,10 +6,16 @@ layout = "default"
 function onStart()
 {
     $this['currentPage'] = 'dish';
+    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
 }
+
+function onSaveDish()
+{
+    
+}
+
 ?>
 ==
-
 <div class="dishes-page" id="dishesPage">
     
     <div class="dishes">
@@ -22,10 +28,9 @@ function onStart()
             </a>
         </div>
 
-        {% partial 'dishes/dish' %}
-        {% partial 'dishes/dish' %}
-        {% partial 'dishes/dish' %}
-        {% partial 'dishes/dish' %}
+        {% for dish in dishes %}
+            {% partial 'dishes/dish' dish=dish %}
+        {% endfor %}
 
     </div>
 

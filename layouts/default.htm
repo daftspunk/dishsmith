@@ -1,5 +1,13 @@
 description = "Default layout"
 ==
+<?php
+public function onStart()
+{
+    if (!Auth::check())
+        return Redirect::to('/');
+}
+?>
+==
 <!DOCTYPE html>
 <html>
     <head>
