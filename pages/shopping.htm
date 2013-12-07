@@ -6,62 +6,17 @@ layout = "default"
 function onStart()
 {
     $this['currentPage'] = 'shop';
+
+    $user = Auth::getUser();
+    $dishes = Plugins\Responsiv\DishSmith\Models\Dish::with('ingredients')->ofUser($user)->ofWeek('A')->get();
+    $this['ingredients'] = Plugins\Responsiv\DishSmith\Models\Dish::mergeIngredients($dishes);
 }
 ?>
 ==
 
 <div class="shopping-page">
-
     <h1><i class="icon-calendar"></i> Week A</h1>
-
     <div class="row shopping-list">
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 list-item">
-            <span class="checkbox custom-checkbox">
-                <input type="checkbox" id="check1" name="check1" value="1">
-                <label for="check1"><span class="lead">Chicken Meat</span></label>
-            </span>
-            <span class="text-primary">400 grams</span>
-            <span class="text-muted">Meatballs</span>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 list-item">
-            <span class="checkbox custom-checkbox">
-                <input type="checkbox" id="check2" name="check1" value="1">
-                <label for="check2"><span class="lead">Chicken Meat</span></label>
-            </span>
-            <span class="text-primary">400 grams</span>
-            <span class="text-muted">Meatballs</span>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 list-item">
-            <span class="checkbox custom-checkbox">
-                <input type="checkbox" id="check3" name="check1" value="1">
-                <label for="check3"><span class="lead">Beef Mince</span></label>
-            </span>
-            <span class="text-primary">400 grams</span>
-            <span class="text-muted">Meatballs, Cashew chicken</span>
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 list-item">
-            <span class="checkbox custom-checkbox">
-                <input type="checkbox" id="check4" name="check1" value="1">
-                <label for="check4"><span class="lead">Chilli Con Carne</span></label>
-            </span>
-            <span class="text-primary">400 grams</span>
-            <span class="text-muted">Meatballs, Nachos, Chicken</span>
-        </div>
-
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 list-item">
-            <span class="checkbox custom-checkbox">
-                <input type="checkbox" id="check5" name="check1" value="1">
-                <label for="check5"><span class="lead">Tinned Tomatoes</span></label>
-            </span>
-            <span class="text-primary">400 grams</span>
-            <span class="text-muted">Meatballs, Nachos, Chicken</span>
-        </div>
-
+        {% partial 'shopping/ingredients' %}
     </div>
-
-
 </div>

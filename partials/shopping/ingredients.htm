@@ -1,0 +1,10 @@
+{% for ingredient in ingredients %}
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 list-item">
+        <span class="checkbox custom-checkbox">
+            <input type="checkbox" id="inputIngredient{{ ingredient.id }}" name="check1" value="1">
+            <label for="inputIngredient{{ ingredient.id }}"><span class="lead">{{ ingredient.name }}</span></label>
+        </span>
+        <span class="text-primary">{{ ingredient.amount }} {{ ingredient.type }}</span>
+        <span class="text-muted">{{ ingredient.usedInString }}</span>
+    </div>
+{% endfor %}
