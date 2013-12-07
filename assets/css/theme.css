@@ -6947,6 +6947,9 @@ a .icon-flip-vertical:before {
   padding: 20px;
 }
 .dishes-page ul.dishes {
+  -webkit-transition: width 0.5s ease;
+  transition: width 0.5s ease;
+  width: 100%;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -7024,6 +7027,9 @@ a .icon-flip-vertical:before {
   line-height: 115px;
   color: #ECF0F1;
   font-size: 32px;
+}
+.dishes-page.edit-mode ul.dishes {
+  width: 400px;
 }
 body {
   padding-top: 30px;
