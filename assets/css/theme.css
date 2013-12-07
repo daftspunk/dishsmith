@@ -6996,6 +6996,10 @@ a .icon-flip-vertical:before {
 }
 .dishes-page .dish-item h3.title {
   color: #C0392B;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
 }
 .dishes-page .dish-item .image {
   padding: 10px 0;
@@ -7052,12 +7056,6 @@ a .icon-flip-vertical:before {
   border-color: #ECF0F1;
   width: 100%;
   margin-bottom: 15px;
-}
-.dishes-page .dish-form .dish-item h3.title {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  display: block;
 }
 .dishes-page .dish-form button.selectpicker {
   border-bottom-left-radius: 0;

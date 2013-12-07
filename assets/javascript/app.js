@@ -41,6 +41,15 @@ $(document).ready(function(){
 $(document)
     .on('ajaxPromise', '[data-request]', function() {
         $('#layout-header').addClass('loading')
+
+        // This code will cover instances where the element has been removed
+        // from the DOM, making the resolution event below an orphan.
+        var $el = $(this);
+        $(window).one('ajaxUpdateComplete', function(){
+            if ($el.closest('html').length === 0)
+                $('#layout-header').removeClass('loading')
+        })
+
     }).on('ajaxFail ajaxDone', '[data-request]', function(){
         $('#layout-header').removeClass('loading')
     })

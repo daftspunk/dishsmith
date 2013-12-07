@@ -19,15 +19,16 @@ function onSaveDish()
 
     $ingredients = $this->getIngredients();
 
-    foreach ($ingredients => $ingredientData) {
+    foreach ($ingredients as $ingredientData) {
         $ingredient = Plugins\Responsiv\DishSmith\Models\Ingredient::firstOrCreate(['name' => $ingredientData['name']]);
 
         $dish->ingredients()->attach($ingredient->id, [
             'type' => trim($ingredientData['type']),
             'amount' => trim($ingredientData['amount'])
-        ])
+        ]);
     }
 
+    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
 }
 
 function onNewDish() {}
@@ -61,6 +62,20 @@ function getIngredients()
 
     return $ingredients;
 }
+
+function onDeleteDish()
+{
+    if (!post('dish_id'))
+        return;
+    
+    $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->find(post('dish_id'));
+    if ($dish) {
+        $dish->ingredients()->detach();
+        $dish->delete();
+    }
+
+    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
+}
 ?>
 ==
 {% put scripts %}
@@ -88,24 +103,8 @@ function getIngredients()
 
 <div class="dishes-page" id="dishesPage">
 
-    <div class="dishes">
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-            <a
-                href="javascript:;" 
-                class="new-dish" 
-                data-request="onNewDish"
-                data-request-success="$('#dishesPage').toggleClass('edit-mode')"
-                data-request-update="'dishes/form': '#partialDishesForm'">
-                <i class="icon-plus"></i>
-                <p>New dish</p>
-            </a>
-        </div>
-
-        <div id="partialDishesDishes">
-            {% partial 'dishes/dishes' %}
-        </div>
-
+    <div id="partialDishesDishes" class="dishes">
+        {% partial 'dishes/dishes' %}
     </div>
 
     <!-- Form -->

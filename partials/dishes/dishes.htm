@@ -1,5 +1,17 @@
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+    <a
+        href="javascript:;" 
+        class="new-dish" 
+        data-request="onNewDish"
+        data-request-success="$('#dishesPage').toggleClass('edit-mode')"
+        data-request-update="'dishes/form': '#partialDishesForm'">
+        <i class="icon-plus"></i>
+        <p>New dish</p>
+    </a>
+</div>
+
 {% for dish in dishes %}
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 dish-item" data-bg="#34495E">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 dish-item">
         <div class="row">
             <div class="col-xs-4">
                 <div class="image">
@@ -7,13 +19,21 @@
                 </div>
             </div>
             <div class="col-xs-8">
-                <h3 class="title">Spaghetti</h3>
+                <h3 class="title">{{ dish.name }}</h3>
                 <div class="normal">
                     <p>Last ate: <strong>7th January 2013</strong></p>
                 </div>
                 <div class="hover">
-                    <a href="#" class="btn btn-sm btn-default">Modify</a>
-                    <a href="#" class="btn btn-sm btn-danger">Remove</a>
+                    <a
+                        href="javascript:;"
+                        class="btn btn-sm btn-default">Modify</a>
+                    <a
+                        href="javascript:;"
+                        data-request="onDeleteDish"
+                        data-request-data="dish_id: {{ dish.id }}"
+                        data-request-confirm="Are you sure?"
+                        data-request-update="'dishes/dishes': '#partialDishesDishes'"
+                        class="btn btn-sm btn-danger">Remove</a>
                 </div>
             </div>
         </div>
