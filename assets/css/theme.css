@@ -7053,6 +7053,11 @@ a .icon-flip-vertical:before {
   width: 100%;
   margin-bottom: 15px;
 }
+.dishes-page .dish-form button.selectpicker {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  margin-left: -1px;
+}
 .dishes-page .dish-form .list-group p.lead {
   margin: 0;
 }
