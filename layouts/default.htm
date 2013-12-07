@@ -15,6 +15,12 @@ public function onChangeWeek()
     Session::put('dishsmith_active_week', post('week'));
     return Redirect::to(URL::current());
 }
+
+public function onLogout()
+{
+    Auth::logout();
+    return Redirect::to('/');
+}
 ?>
 ==
 <!DOCTYPE html>
