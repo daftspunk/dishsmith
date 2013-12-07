@@ -6866,6 +6866,60 @@ a .icon-flip-vertical:before {
   font-weight: 300;
   font-style: normal;
 }
+.planner-page ul.dishes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.planner-page ul.dishes li {
+  width: 200px;
+  float: left;
+  margin-right: 5px;
+}
+.planner-page ul.dishes li h5.day {
+  margin: 0;
+  padding: 10px 0;
+  font-size: 18px;
+  display: block;
+  background: #ECF0F1;
+  text-align: center;
+  color: #C0392B;
+}
+.planner-page ul.dishes li .image {
+  padding: 10px 0;
+  text-align: center;
+}
+.planner-page ul.dishes li .image img {
+  width: 95%;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  border-radius: 999px;
+}
+.planner-page ul.dishes li h3.title {
+  margin: 0;
+  padding: 10px 0;
+  background: #ECF0F1;
+  color: #C0392B;
+  text-align: center;
+}
+.planner-page ul.dishes li ul.ingredients {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #666;
+  font-size: 16px ;
+}
+.planner-page ul.dishes li ul.ingredients li {
+  padding: 5px 0;
+  background: white;
+  text-align: center;
+}
+.planner-page ul.dishes li ul.ingredients li:nth-child(even) {
+  background: #ECF0F1;
+}
+.planner-page ul.dishes li.active {
+  border: 2px solid red;
+}
 body {
   padding-top: 30px;
   background: #2980B9;

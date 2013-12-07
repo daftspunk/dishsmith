@@ -3,3 +3,73 @@
 //
 // Styles specific to individual pages.
 //
+
+.planner-page {
+
+    ul.dishes {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li { 
+            width: 200px;
+            float: left;
+            margin-right: 5px;
+            h5.day {
+                margin: 0;
+                padding: 10px 0;
+                font-size: 18px;
+                display: block;
+                background: #ECF0F1;
+                text-align: center;
+                color: #C0392B;
+            }
+
+            .image {
+                padding: 10px 0;
+                text-align: center;
+                img { 
+                    width: 95%;
+                    .border-radius(999px);
+                }
+            }
+
+            h3.title {
+                margin: 0;
+                padding: 10px 0;
+                background: #ECF0F1;
+                color: #C0392B;
+                text-align: center;
+            }
+
+            ul.ingredients {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                color: #666;
+                font-size: 16px ;
+                li {
+                    padding: 5px 0;
+                    background: white;
+                    text-align: center;
+                    &:nth-child(even) {
+                        background: #ECF0F1;
+                    }
+                }
+            }
+
+            &.active {
+                border: 2px solid red;
+            }
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
