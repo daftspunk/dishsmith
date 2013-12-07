@@ -7219,39 +7219,39 @@ body {
   padding-top: 30px;
   background: #2980B9;
 }
-#layout-header-container {
+body.default-layout #layout-header-container {
   padding-bottom: 0;
 }
-header#layout-header h1 {
+body.default-layout header#layout-header h1 {
   font-size: 48px;
   margin: 0;
   color: white;
   font-weight: bold;
 }
-header#layout-header h1 span {
+body.default-layout header#layout-header h1 span {
   font-style: italic;
 }
-header#layout-header h1 a {
+body.default-layout header#layout-header h1 a {
   color: white;
   text-decoration: none;
   display: block;
 }
-header#layout-header h1 a:hover i {
+body.default-layout header#layout-header h1 a:hover i {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
-header#layout-header i.icon-food {
+body.default-layout header#layout-header i.icon-food {
   width: 40px;
   height: 40px;
   display: inline-block;
   position: relative;
 }
-header#layout-header i.icon-food:before,
-header#layout-header i.icon-food:after {
+body.default-layout header#layout-header i.icon-food:before,
+body.default-layout header#layout-header i.icon-food:after {
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
-header#layout-header i.icon-food:after {
+body.default-layout header#layout-header i.icon-food:after {
   opacity: 0;
   filter: alpha(opacity=0);
   content: '';
@@ -7269,31 +7269,31 @@ header#layout-header i.icon-food:after {
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
 }
-header#layout-header.loading i.icon-food:before {
+body.default-layout header#layout-header.loading i.icon-food:before {
   opacity: 0;
   filter: alpha(opacity=0);
 }
-header#layout-header.loading i.icon-food:after {
+body.default-layout header#layout-header.loading i.icon-food:after {
   opacity: 1;
   filter: alpha(opacity=100);
 }
-nav#layout-nav * {
+body.default-layout nav#layout-nav * {
   border-color: transparent !important;
 }
-nav#layout-nav ul {
+body.default-layout nav#layout-nav ul {
   margin-top: 15px;
 }
-nav#layout-nav li {
+body.default-layout nav#layout-nav li {
   margin: 0 5px;
 }
-nav#layout-nav li a {
+body.default-layout nav#layout-nav li a {
   color: white;
   font-size: 18px;
 }
-nav#layout-nav li a:hover {
+body.default-layout nav#layout-nav li a:hover {
   color: #C0392B;
 }
-nav#layout-nav li.active a {
+body.default-layout nav#layout-nav li.active a {
   color: #C0392B;
 }
 body.default-layout section#layout-content .container {
