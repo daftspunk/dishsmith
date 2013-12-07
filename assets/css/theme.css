@@ -6866,20 +6866,26 @@ a .icon-flip-vertical:before {
   font-weight: 300;
   font-style: normal;
 }
+.planner-page .dishes-container {
+  overflow: hidden;
+  overflow-x: scroll;
+}
 .planner-page ul.dishes {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
 }
 .planner-page ul.dishes li {
-  width: 200px;
-  float: left;
-  margin-right: 5px;
+  flex: 0 0 250px;
+  position: relative;
+  border: 2px solid white;
 }
 .planner-page ul.dishes li h5.day {
   margin: 0;
   padding: 10px 0;
-  font-size: 18px;
+  font-size: 22px;
   display: block;
   background: #ECF0F1;
   text-align: center;
@@ -6907,7 +6913,8 @@ a .icon-flip-vertical:before {
   margin: 0;
   padding: 0;
   color: #666;
-  font-size: 16px ;
+  font-size: 16px;
+  overflow: hidden;
 }
 .planner-page ul.dishes li ul.ingredients li {
   padding: 5px 0;
@@ -6918,7 +6925,69 @@ a .icon-flip-vertical:before {
   background: #ECF0F1;
 }
 .planner-page ul.dishes li.active {
-  border: 2px solid red;
+  border-color: #C0392B;
+}
+.planner-page ul.dishes li.active:before {
+  position: absolute;
+  left: 50%;
+  margin-left: -15px;
+  content: '';
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 10px solid #c0392b;
+}
+.planner-page ul.dishes li.today h5.day {
+  background: #F1C40F;
+  color: white;
+}
+.dishes-page {
+  padding: 20px;
+}
+.dishes-page ul.dishes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.dishes-page ul.dishes:before,
+.dishes-page ul.dishes:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.dishes-page ul.dishes:after {
+  clear: both;
+}
+.dishes-page ul.dishes:before,
+.dishes-page ul.dishes:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */
+}
+.dishes-page ul.dishes:after {
+  clear: both;
+}
+.dishes-page ul.dishes li {
+  float: left;
+  width: 350px;
+  border: 2px solid transparent;
+}
+.dishes-page ul.dishes li .image {
+  padding: 10px 0;
+  text-align: center;
+}
+.dishes-page ul.dishes li .image img {
+  width: 95%;
+  -webkit-border-radius: 999px;
+  -moz-border-radius: 999px;
+  border-radius: 999px;
+}
+.dishes-page ul.dishes li:hover {
+  border-color: #ccc;
 }
 body {
   padding-top: 30px;

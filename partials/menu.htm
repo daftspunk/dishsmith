@@ -1,0 +1,11 @@
+{% set 
+    items = {
+        'dish': ['/dishes', 'Dish'],
+        'plan': ['/planner', 'Plan'],
+        'shop': ['/shopping', 'Shop']
+    }
+%}
+
+{% for index, item in items %}
+    <li class="{% if index == currentPage %}active{% endif %}"><a href="{{ item[0] }}">{{ item[1] }}</a></li>
+{% endfor %}

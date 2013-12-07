@@ -25,9 +25,7 @@ description = "Default layout"
                     <!-- Nav -->
                     <nav id="layout-nav" class="pull-right">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a href="{{ 'dishes'|page }}">Dish</a></li>
-                            <li><a href="{{ 'planner'|page }}">Plan</a></li>
-                            <li><a href="{{ 'shopping'|page }}">Shop</a></li>
+                            {% partial "menu" %}
                         </ul>
                     </nav>
                 </div>

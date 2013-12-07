@@ -4,26 +4,22 @@
 // Styles specific to individual pages.
 //
 
-.planner-page {
+@import "planner";
+
+.dishes-page {
+
+    padding: 20px;
 
     ul.dishes {
         list-style: none;
         margin: 0;
         padding: 0;
+        .clearfix;
 
-        li { 
-            width: 200px;
+        li {
             float: left;
-            margin-right: 5px;
-            h5.day {
-                margin: 0;
-                padding: 10px 0;
-                font-size: 18px;
-                display: block;
-                background: #ECF0F1;
-                text-align: center;
-                color: #C0392B;
-            }
+            width: 350px;
+            border: 2px solid transparent;
 
             .image {
                 padding: 10px 0;
@@ -34,42 +30,10 @@
                 }
             }
 
-            h3.title {
-                margin: 0;
-                padding: 10px 0;
-                background: #ECF0F1;
-                color: #C0392B;
-                text-align: center;
-            }
-
-            ul.ingredients {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-                color: #666;
-                font-size: 16px ;
-                li {
-                    padding: 5px 0;
-                    background: white;
-                    text-align: center;
-                    &:nth-child(even) {
-                        background: #ECF0F1;
-                    }
-                }
-            }
-
-            &.active {
-                border: 2px solid red;
+            &:hover { 
+                border-color: #ccc;
             }
         }
-
     }
 
 }
-
-
-
-
-
-
-

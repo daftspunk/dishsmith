@@ -2,12 +2,37 @@ title = "Planner"
 url = "/planner"
 layout = "default"
 ==
+<?php
+function onStart()
+{
+    $this['currentPage'] = 'plan';
+}
+?>
+==
 
 <div class="planner-page">
 
     <div class="dishes-container">
         <ul class="dishes">
-            <li style="background: #1ABC9C" class="today">
+
+            <li data-bg="#34495E">
+                <h5 class="day">
+                    Sunday <small>5th Dec</small>
+                </h5>
+                <div class="image">
+                    <img src="http://placehold.it/350x350" alt="" />
+                </div>
+                <h3 class="title">Spaghetti</h3>
+
+                <ul class="ingredients">
+                    <li>Beef Mince</li>
+                    <li>Spahetti Pasta</li>
+                    <li>Tinned Tomatoes</li>
+                    <li>Tomato Paste</li>
+                </ul>
+            </li>
+
+            <li data-bg="#1ABC9C">
                 <h5 class="day">
                     Monday <small>6th Dec</small>
                 </h5>
@@ -23,8 +48,7 @@ layout = "default"
                 </ul>
             </li>
 
-
-            <li style="background: #2ECC71">
+            <li data-bg="#2ECC71">
                 <h5 class="day">
                     Tuesday <small>7th Dec</small>
                 </h5>
@@ -42,9 +66,9 @@ layout = "default"
                 </ul>
             </li>
 
-            <li style="background: #3498DB" class="active">
+            <li data-bg="#3498DB" class="today active">
                 <h5 class="day">
-                    Wednesday <small>8th Dec</small>
+                    Today
                 </h5>
                 <div class="image">
                     <img src="http://placehold.it/350x350" alt="" />
@@ -61,7 +85,7 @@ layout = "default"
                 </ul>
             </li>
 
-            <li style="background: #9B59B6">
+            <li data-bg="#9B59B6">
                 <h5 class="day">
                     Thursday <small>9th Dec</small>
                 </h5>
@@ -78,7 +102,7 @@ layout = "default"
                 </ul>
             </li>
 
-            <li style="background: #34495E">
+            <li data-bg="#34495E">
                 <h5 class="day">
                     Friday <small>10th Dec</small>
                 </h5>
@@ -95,6 +119,22 @@ layout = "default"
                 </ul>
             </li>
 
+            <li data-bg="#34495E">
+                <h5 class="day">
+                    Saturday <small>11th Dec</small>
+                </h5>
+                <div class="image">
+                    <img src="http://placehold.it/350x350" alt="" />
+                </div>
+                <h3 class="title">Spaghetti</h3>
+
+                <ul class="ingredients">
+                    <li>Beef Mince</li>
+                    <li>Spahetti Pasta</li>
+                    <li>Tinned Tomatoes</li>
+                    <li>Tomato Paste</li>
+                </ul>
+            </li>
 
         </ul>
 
