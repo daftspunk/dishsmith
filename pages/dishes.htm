@@ -18,6 +18,17 @@ function onNewDish() {}
 
 ?>
 ==
+{% put scripts %}
+<script>
+    $(document).on('keyup', '#inputDishName', function(){
+        var name = $(this).val()
+        if (!name) 
+            $('#previewDishName').html('<span class="text-muted">No name</span>')
+        else
+            $('#previewDishName').text(name)
+    })
+</script>
+{% endput %}
 <div class="dishes-page" id="dishesPage">
 
     <div class="dishes">
