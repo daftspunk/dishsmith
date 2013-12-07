@@ -1,0 +1,81 @@
+@import "../theme/boot";
+
+.shopping-page {
+    padding: 20px;
+
+    .shopping-list {
+
+        .list-item {
+            border-top: 1px solid #e0e0e0;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            line-height: 1;
+            i { 
+                font-size: 24px;
+                position: relative;
+                top: 2px;
+                margin-right: 2px;
+            }
+        }
+    }
+
+
+    // Checkbox item
+
+    .custom-checkbox {
+        display: inline-block;
+
+        input[type=checkbox] {
+            display: none;
+        }
+        
+        label {
+            display: inline-block;
+            cursor: pointer;
+            position: relative;
+            padding-left: 30px;
+            margin-right: 5px;
+            margin-left: -20px;
+            
+            font-size: 22px;
+            &:before {
+                content: "";
+                display: inline-block;
+                text-align: center;
+
+                width: 22px;
+                height: 22px;
+
+                margin-right: 15px;
+                position: absolute;
+                left: 0;
+                top: 3px;
+                background-color: #FFFFFF;
+                border: 1px solid #999;
+                color: #999;
+
+            }
+            &:hover:before {
+                border-color: #333;
+                color: #333;
+            }
+            &:active:before {
+                border-color: #000;
+                color: #000;
+            }
+        }
+        input[type=checkbox]:checked + label {
+            text-decoration: line-through;
+            color: #999;
+            &:before {
+                .icon(@ok);
+                text-decoration: none;
+                font-size: 16px;
+                line-height: 20px;
+                border-width: 2px;
+            }
+        }
+    }
+
+
+}
