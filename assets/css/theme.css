@@ -7134,6 +7134,18 @@ a .icon-flip-vertical:before {
   line-height: 20px;
   border-width: 2px;
 }
+.home-page h1 {
+  display: block;
+  background: white;
+  -webkit-border-radius: 9999px;
+  -moz-border-radius: 9999px;
+  border-radius: 9999px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  line-height: 200px;
+  text-align: center;
+}
 body {
   padding-top: 30px;
   background: #2980B9;
@@ -7178,7 +7190,7 @@ nav#layout-nav li a:hover {
 nav#layout-nav li.active a {
   color: #C0392B;
 }
-section#layout-content .container {
+body.default-layout section#layout-content .container {
   background: white;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;

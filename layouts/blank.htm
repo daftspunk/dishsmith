@@ -1,4 +1,4 @@
-description = "Default layout"
+description = "Blank layout"
 ==
 <!DOCTYPE html>
 <html>
@@ -12,30 +12,7 @@ description = "Default layout"
             'assets/vendor/bootstrap-select/bootstrap-select.css',
         ]|theme }}" rel="stylesheet">
     </head>
-    <body class="default-layout">
-
-        <div class="container" id="layout-header-container">
-            <div class="row">
-                <div class="col-sm-6">
-                    <!-- Header -->
-                    <header id="layout-header">
-                        <h1>
-                            <a href="/">
-                                <i class="icon-food"></i> <span>Dish</span> Smith
-                            </a>
-                        </h1>
-                    </header>
-                </div>
-                <div class="col-sm-6">
-                    <!-- Nav -->
-                    <nav id="layout-nav" class="pull-right">
-                        <ul class="nav nav-tabs">
-                            {% partial "menu" %}
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        </div>
+    <body class="blank-layout">
 
         <!-- Content -->
         <section id="layout-content">
@@ -43,11 +20,6 @@ description = "Default layout"
                 {% page %}
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer id="layout-footer">
-            {% partial "footer" %}
-        </footer>
 
         <!-- Scripts -->
         <script src="{{ [
