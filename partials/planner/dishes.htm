@@ -1,0 +1,22 @@
+<li class="start-banner">
+    <span>Week A</span>
+</li>
+
+{% for dish in dishes %}
+    <li>
+        <h5 class="day">
+            Day {{ loop.index }}
+        </h5>
+        <div class="image">
+            <img src="http://placehold.it/350x350" alt="" />
+        </div>
+        <h3 class="title">{{ dish.name }}</h3>
+
+        <ul class="ingredients">
+            {% for ingredient in dish.ingredients %}
+                <li>{{ ingredient.name }}</li>
+            {% endfor %}
+        </ul>
+    </li>
+{% endfor %}
+

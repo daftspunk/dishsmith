@@ -6,6 +6,9 @@ layout = "default"
 function onStart()
 {
     $this['currentPage'] = 'plan';
+
+    $user = Auth::getUser();
+    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->paginate(7);
 }
 ?>
 ==
@@ -16,136 +19,9 @@ function onStart()
 {% endput %}
 
 <div class="planner-page">
-
     <div class="dishes-container" id="dishesContainer">
         <ul class="dishes">
-
-            <li class="start-banner">
-                <span>Week A</span>
-            </li>
-
-            <li>
-                <h5 class="day">
-                    Day 1
-                </h5>
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-                <h3 class="title">Spaghetti</h3>
-
-                <ul class="ingredients">
-                    <li>Beef Mince</li>
-                    <li>Spahetti Pasta</li>
-                    <li>Tinned Tomatoes</li>
-                    <li>Tomato Paste</li>
-                </ul>
-            </li>
-
-            <li>
-                <h5 class="day">
-                    Day 2
-                </h5>
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-                <h3 class="title">Spaghetti</h3>
-
-                <ul class="ingredients">
-                    <li>Spahetti Pasta</li>
-                    <li>Tinned Tomatoes</li>
-                    <li>Tomato Paste</li>
-                </ul>
-            </li>
-
-            <li>
-                <h5 class="day">
-                    Day 3
-                </h5>
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-                <h3 class="title">Spaghetti</h3>
-
-                <ul class="ingredients">
-                    <li>Beef Mince</li>
-                    <li>Spahetti Pasta</li>
-                    <li>Spahetti Pasta</li>
-                    <li>Tinned Tomatoes</li>
-                    <li>Tomato Paste</li>
-                </ul>
-            </li>
-
-            <li>
-                <h5 class="day">
-                    Day 4
-                </h5>
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-                <h3 class="title">Spaghetti</h3>
-
-                <ul class="ingredients">
-                    <li>Beef Mince</li>
-                    <li>Beef Mince</li>
-                    <li>Beef Mince</li>
-                    <li>Spahetti Pasta</li>
-                    <li>Tinned Tomatoes</li>
-                    <li>Tomato Paste</li>
-                </ul>
-            </li>
-
-            <li>
-                <h5 class="day">
-                    Day 5
-                </h5>
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-                <h3 class="title">Spaghetti</h3>
-
-                <ul class="ingredients">
-                    <li>Beef Mince</li>
-                    <li>Spahetti Pasta</li>
-                    <li>Tinned Tomatoes</li>
-                    <li>Tomato Paste</li>
-                </ul>
-            </li>
-
-            <li>
-                <h5 class="day">
-                    Day 6
-                </h5>
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-                <h3 class="title">Spaghetti</h3>
-
-                <ul class="ingredients">
-                    <li>Beef Mince</li>
-                    <li>Spahetti Pasta</li>
-                    <li>Tinned Tomatoes</li>
-                    <li>Tomato Paste</li>
-                </ul>
-            </li>
-
-            <li>
-                <h5 class="day">
-                    Day 7
-                </h5>
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-                <h3 class="title">Spaghetti</h3>
-
-                <ul class="ingredients">
-                    <li>Beef Mince</li>
-                    <li>Spahetti Pasta</li>
-                    <li>Tinned Tomatoes</li>
-                    <li>Tomato Paste</li>
-                </ul>
-            </li>
-
+            {% partial 'planner/dishes' %}
         </ul>
-
     </div>
 </div>
