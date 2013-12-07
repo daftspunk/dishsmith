@@ -15,19 +15,41 @@
         display: flex;
         flex-direction: row;
 
-        li { 
-            flex: 0 0 250px;
+        > li { 
+            flex: 0 0 200px;
             position: relative;
-            border: 2px solid white;
+            border: 2px solid #ECF0F1;
+
+            &.start-banner {
+                flex: 0 0 50px;
+                background: #E74C3C;
+                position: relative;
+
+                span {
+                    position: absolute;
+                    top: 50%;
+                    left: 0;
+                    width: 50px;
+                    line-height: 50px;
+                    text-align: center;
+                    display: block;
+                    color: white;
+                    .rotate(-90deg);
+                    white-space: nowrap;
+                    font-size: 22px;
+                    text-transform: uppercase;
+                    letter-spacing: 10px;
+                }
+            }
 
             h5.day {
                 margin: 0;
                 padding: 10px 0;
-                font-size: 22px;
+                font-size: 28px;
                 display: block;
                 background: #ECF0F1;
                 text-align: center;
-                color: #C0392B;
+                color: #555;
             }
 
             .image {

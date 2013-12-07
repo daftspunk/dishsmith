@@ -6877,38 +6877,60 @@ a .icon-flip-vertical:before {
   display: flex;
   flex-direction: row;
 }
-.planner-page ul.dishes li {
-  flex: 0 0 250px;
+.planner-page ul.dishes > li {
+  flex: 0 0 200px;
   position: relative;
-  border: 2px solid white;
+  border: 2px solid #ECF0F1;
 }
-.planner-page ul.dishes li h5.day {
+.planner-page ul.dishes > li.start-banner {
+  flex: 0 0 50px;
+  background: #E74C3C;
+  position: relative;
+}
+.planner-page ul.dishes > li.start-banner span {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 50px;
+  line-height: 50px;
+  text-align: center;
+  display: block;
+  color: white;
+  -webkit-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  white-space: nowrap;
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+.planner-page ul.dishes > li h5.day {
   margin: 0;
   padding: 10px 0;
-  font-size: 22px;
+  font-size: 28px;
   display: block;
   background: #ECF0F1;
   text-align: center;
-  color: #C0392B;
+  color: #555;
 }
-.planner-page ul.dishes li .image {
+.planner-page ul.dishes > li .image {
   padding: 10px 0;
   text-align: center;
 }
-.planner-page ul.dishes li .image img {
+.planner-page ul.dishes > li .image img {
   width: 95%;
   -webkit-border-radius: 999px;
   -moz-border-radius: 999px;
   border-radius: 999px;
 }
-.planner-page ul.dishes li h3.title {
+.planner-page ul.dishes > li h3.title {
   margin: 0;
   padding: 10px 0;
   background: #ECF0F1;
   color: #C0392B;
   text-align: center;
 }
-.planner-page ul.dishes li ul.ingredients {
+.planner-page ul.dishes > li ul.ingredients {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -6916,18 +6938,18 @@ a .icon-flip-vertical:before {
   font-size: 16px;
   overflow: hidden;
 }
-.planner-page ul.dishes li ul.ingredients li {
+.planner-page ul.dishes > li ul.ingredients li {
   padding: 5px 0;
   background: white;
   text-align: center;
 }
-.planner-page ul.dishes li ul.ingredients li:nth-child(even) {
+.planner-page ul.dishes > li ul.ingredients li:nth-child(even) {
   background: #ECF0F1;
 }
-.planner-page ul.dishes li.active {
+.planner-page ul.dishes > li.active {
   border-color: #C0392B;
 }
-.planner-page ul.dishes li.active:before {
+.planner-page ul.dishes > li.active:before {
   position: absolute;
   left: 50%;
   margin-left: -15px;
@@ -6939,7 +6961,7 @@ a .icon-flip-vertical:before {
   border-right: 15px solid transparent;
   border-top: 10px solid #c0392b;
 }
-.planner-page ul.dishes li.today h5.day {
+.planner-page ul.dishes > li.today h5.day {
   background: #F1C40F;
   color: white;
 }
@@ -7220,11 +7242,17 @@ a .icon-flip-vertical:before {
   color: #3498DB;
 }
 body {
-  padding-top: 30px;
   background: #2980B9;
 }
 body.default-layout #layout-header-container {
+  padding-top: 40px;
   padding-bottom: 0;
+  position: relative;
+}
+body.default-layout #layout-header-container .user-menu {
+  position: absolute;
+  top: 5px;
+  right: 0;
 }
 body.default-layout header#layout-header h1 {
   font-size: 48px;
@@ -7299,6 +7327,12 @@ body.default-layout nav#layout-nav li a:hover {
 }
 body.default-layout nav#layout-nav li.active a {
   color: #C0392B;
+}
+body.default-layout .active-day {
+  padding: 10px 0 0 10px;
+}
+body.default-layout .active-day .btn-group {
+  margin: 0;
 }
 body.default-layout section#layout-content .container {
   background: white;

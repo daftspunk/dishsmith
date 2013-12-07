@@ -24,7 +24,7 @@ public function onStart()
 
         <div class="container" id="layout-header-container">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <!-- Header -->
                     <header id="layout-header">
                         <h1>
@@ -34,14 +34,25 @@ public function onStart()
                         </h1>
                     </header>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-7">
+                    <div class="active-day pull-right">
+                        <select class="selectpicker" data-width="150px" data-style="btn-primary">
+                            <option data-icon="icon-calendar-empty">Week A</option>
+                        </select>
+                    </div>
+
                     <!-- Nav -->
                     <nav id="layout-nav" class="pull-right">
                         <ul class="nav nav-tabs">
                             {% partial "menu" %}
                         </ul>
                     </nav>
+
                 </div>
+            </div>
+
+            <div class="user-menu">
+
             </div>
         </div>
 

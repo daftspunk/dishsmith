@@ -8,14 +8,22 @@
 
 // Used by the fixed navigation
 body {
-    padding-top: 30px;
     background: #2980B9;
 }
 
 body.default-layout {
 
     #layout-header-container {
+        padding-top: 40px;
         padding-bottom: 0;
+        position: relative;
+
+        .user-menu {
+            position: absolute;
+            top: 5px;
+            right: 0;
+        }
+
     }
 
     header#layout-header {
@@ -97,6 +105,11 @@ body.default-layout {
                 }
             }
         }
+    }
+
+    .active-day {
+        padding: 10px 0 0 10px;
+        .btn-group { margin:0; }
     }
 
     section#layout-content .container {
