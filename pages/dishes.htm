@@ -12,16 +12,25 @@ function onStart()
 function onSaveDish()
 {
     $user = Auth::getUser();
-    $dish = Plugins\Responsiv\DishSmith\Models\Dish::create([
+
+    if (post('dish_id')) {
+        $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
+        $dish->ingredients()->detach();
+    }
+    else {
+        $dish = Plugins\Responsiv\DishSmith\Models\Dish::create([
                 'name' => post('name'),
                 'user_id' => $user->id
             ]);
+    }
+
+    if (!$dish)
+        throw new Exception('Unable to find dish!');
 
     $ingredients = $this->getIngredients();
 
     foreach ($ingredients as $ingredientData) {
         $ingredient = Plugins\Responsiv\DishSmith\Models\Ingredient::firstOrCreate(['name' => $ingredientData['name']]);
-
         $dish->ingredients()->attach($ingredient->id, [
             'type' => trim($ingredientData['type']),
             'amount' => trim($ingredientData['amount'])
@@ -30,8 +39,6 @@ function onSaveDish()
 
     $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
 }
-
-function onNewDish() {}
 
 function onAddIngredient()
 {
@@ -43,7 +50,7 @@ function onAddIngredient()
     ];
 
     $this['ingredients'] = $ingredients;
-    $this['dishName'] = post('name');
+    $this['dish'] = ['name' => post('name')];
 }
 
 function getIngredients()
@@ -67,14 +74,35 @@ function onDeleteDish()
 {
     if (!post('dish_id'))
         return;
-    
-    $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->find(post('dish_id'));
+
+    $user = Auth::getUser();
+    $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
     if ($dish) {
         $dish->ingredients()->detach();
         $dish->delete();
     }
 
-    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
+    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->get();
+}
+
+function onModifyDish()
+{
+    if (!post('dish_id'))
+        return;
+
+    $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->find(post('dish_id'));
+    if ($dish) {
+        $this['ingredients'] = $dish->getIngredients();
+        $this['dish'] = $dish;
+        $this['ingredientCount'] = $dish->ingredients->count();
+    }
+    else
+        $this->onNewDish();
+}
+
+function onNewDish() 
+{
+    $this['ingredientCount'] = 0;
 }
 ?>
 ==

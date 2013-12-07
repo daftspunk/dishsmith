@@ -26,6 +26,10 @@
                 <div class="hover">
                     <a
                         href="javascript:;"
+                        data-request="onModifyDish"
+                        data-request-data="dish_id: {{ dish.id }}"
+                        data-request-update="'dishes/form': '#partialDishesForm'"
+                        data-request-success="$('#dishesPage').toggleClass('edit-mode')"
                         class="btn btn-sm btn-default">Modify</a>
                     <a
                         href="javascript:;"

@@ -9,8 +9,14 @@
                 </div>
             </div>
             <div class="col-xs-8">
-                <h3 class="title" id="previewDishName"><span class="text-muted">No name</span></h3>
-                <p>Ingredients: <span id="previewIngredientNumber">0</span></p>
+                <h3 class="title" id="previewDishName">
+                    {% if dish.name %}
+                        {{ dish.name }}
+                    {% else %}
+                        <span class="text-muted">No name</span>
+                    {% endif %}
+                </h3>
+                <p>Ingredients: <span id="previewIngredientNumber">{{ ingredientCount }}</span></p>
             </div>
         </div>
     </div>
@@ -22,6 +28,8 @@
         data-request="onAddIngredient"
         data-request-update="'dishes/ingredients': '#partialDishesIngredients'"
         data-request-success="clearIngredientsForm()">
+        {% if dish.id %}<input type="hidden" name="dish_id" value="{{ dish.id }}" />{% endif %}
+
         <div class="form-group btn-group btn-group-justified">
             <a href="javascript:;"
                 data-request="onSaveDish"
@@ -38,7 +46,7 @@
         </div>
 
         <div class="form-group">
-            <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" id="inputDishName" value="{{ dishName }}" />
+            <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" id="inputDishName" value="{{ dish.name }}" />
         </div>
 
         <div class="panel panel-default">
