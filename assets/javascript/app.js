@@ -19,8 +19,15 @@
 =require ../vendor/bootstrap/js/scrollspy
 =require ../vendor/bootstrap/js/tab
 =require ../vendor/bootstrap/js/affix
+=require ../vendor/bootstrap-select/bootstrap-select.js
  */
 
 $(document).tooltip({
     selector: "[data-toggle=tooltip]"
+})
+
+$(document).ready(function(){
+    $('.selectpicker').selectpicker({
+        container: 'body'
+    })
 })

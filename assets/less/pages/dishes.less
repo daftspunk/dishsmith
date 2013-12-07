@@ -1,3 +1,5 @@
+@import "../theme/boot";
+
 .dishes-page {
 
     position: relative;
@@ -16,16 +18,31 @@
     // Off screen elements
     //
 
+    .dishes {
+        top: 0;
+    }
+
     .dish-form {
         width: 100%;
-        position: absolute;
-        top: -100%;
-        left: 0;
+        position: relative;
+        height: 0;
+        overflow: hidden;
+        .opacity(0);
+        top: -50px;
     }
 
     &.edit-mode {
-        .dishes { .opacity(0); }
-        .dish-form { top: 0; width: 100%; }
+        .dishes { 
+            .opacity(0);
+            height: 0;
+            overflow: hidden;
+            top: -50px;
+        }
+        .dish-form {
+            height: auto;
+            .opacity(1);
+            top: 0;
+        }
     }
 
     //
@@ -34,7 +51,6 @@
 
     .dishes {
         position: relative;
-        .transition(opacity 0.5s ease);
 
         display: flex;
         flex-direction: row;
@@ -119,6 +135,12 @@
         .dish-item {
             border-color: #ECF0F1;
             width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .list-group {
+            p.lead { margin:0; }
+            button.close { position: relative; top: 5px; }
         }
 
     }

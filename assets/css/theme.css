@@ -6953,24 +6953,33 @@ a .icon-flip-vertical:before {
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
 }
+.dishes-page .dishes {
+  top: 0;
+}
 .dishes-page .dish-form {
   width: 100%;
-  position: absolute;
-  top: -100%;
-  left: 0;
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  top: -50px;
 }
 .dishes-page.edit-mode .dishes {
   opacity: 0;
   filter: alpha(opacity=0);
+  height: 0;
+  overflow: hidden;
+  top: -50px;
 }
 .dishes-page.edit-mode .dish-form {
+  height: auto;
+  opacity: 1;
+  filter: alpha(opacity=100);
   top: 0;
-  width: 100%;
 }
 .dishes-page .dishes {
   position: relative;
-  -webkit-transition: opacity 0.5s ease;
-  transition: opacity 0.5s ease;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -7042,6 +7051,14 @@ a .icon-flip-vertical:before {
 .dishes-page .dish-form .dish-item {
   border-color: #ECF0F1;
   width: 100%;
+  margin-bottom: 15px;
+}
+.dishes-page .dish-form .list-group p.lead {
+  margin: 0;
+}
+.dishes-page .dish-form .list-group button.close {
+  position: relative;
+  top: 5px;
 }
 body {
   padding-top: 30px;
