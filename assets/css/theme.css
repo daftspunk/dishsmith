@@ -7094,6 +7094,10 @@ a .icon-flip-vertical:before {
 .shopping-page {
   padding: 20px;
 }
+.shopping-page h1 {
+  color: #C0392B;
+  padding-bottom: 10px;
+}
 .shopping-page .shopping-list .list-item {
   border-top: 1px solid #e0e0e0;
   padding-top: 5px;
@@ -7329,7 +7333,7 @@ body.default-layout nav#layout-nav li.active a {
   color: #C0392B;
 }
 body.default-layout .active-day {
-  padding: 10px 0 0 10px;
+  padding: 15px 0 0 10px;
 }
 body.default-layout .active-day .btn-group {
   margin: 0;

@@ -7,6 +7,9 @@
 /*
  * Bootstrap
  * 
+=require modernizr
+=require mousewheel
+=require dragscroll
 =require ../vendor/bootstrap/js/transition
 =require ../vendor/bootstrap/js/alert
 =require ../vendor/bootstrap/js/button

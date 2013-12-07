@@ -9,10 +9,15 @@ function onStart()
 }
 ?>
 ==
+{% put scripts %}
+<script>
+    $('#dishesContainer').dragScroll();
+</script>
+{% endput %}
 
 <div class="planner-page">
 
-    <div class="dishes-container">
+    <div class="dishes-container" id="dishesContainer">
         <ul class="dishes">
 
             <li class="start-banner">
