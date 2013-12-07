@@ -13,6 +13,24 @@ public function onEnter()
     $validation = Validator::make(post(), $rules);
     if ($validation->fails())
         throw new October\Rain\Support\ValidationException($validation);
+
+    $user = Auth::findUserByLogin(post('email'));
+    if (!$user) {
+        // Register user
+        $user = Auth::register([
+            'email' => post('email'),
+            'password_confirmation' => post('password'),
+            'password' => post('password')
+        ], true);
+    }
+
+    // Authenticate user
+    $user = Auth::authenticate([
+        'email' => post('email'),
+        'password' => post('password')
+    ], true);
+
+    return Redirect::to('dishes');
 }
 ?>
 ==
@@ -60,11 +78,11 @@ jQuery(document).ready(function($){
                 data-request="onEnter">
                 <div class="form-group">
                     <label class="sr-only" for="inputEmail">Email address</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
+                    <input name="email" type="email" class="form-control" id="inputEmail" placeholder="Enter email">
                 </div>
                 <div class="form-group">
                     <label class="sr-only" for="inputPassword">Password</label>
-                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    <input name="password" type="password" class="form-control" id="inputPassword" placeholder="Password">
                 </div>
                 <button type="submit" class="btn btn-default">Enter</button>
                 <a href="javascript:;" 

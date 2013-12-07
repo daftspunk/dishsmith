@@ -7176,7 +7176,7 @@ a .icon-flip-vertical:before {
   background: rgba(255, 255, 255, 0.5);
 }
 .home-page .logo-circle.loading:after {
-  content: ' ';
+  content: '';
   display: block;
   position: absolute;
   top: 50%;
@@ -7288,6 +7288,12 @@ footer#layout-footer a:hover {
 .form-control:focus {
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+.btn:active,
+.btn.active {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  outline: none;
 }
 .callout {
   margin-bottom: 20px;
