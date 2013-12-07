@@ -1,0 +1,8 @@
+{% for ingredient in ingredients %}
+    <li class="list-group-item">
+        <button type="button" 
+            class="close pull-right" 
+            onclick="$(this).closest('li').remove()">&times;</button>
+        <p class="lead"><strong>Mince meat</strong> <small>400 grams</small></p>
+    </li>
+{% endfor %}

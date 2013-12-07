@@ -1,59 +1,71 @@
-<div class="form-group btn-group btn-group-justified">
-    <a href="#" 
-        onclick="$('#dishesPage').toggleClass('edit-mode')"
-        class="btn btn-lg btn-primary">
-        Save
-    </a>
-    <a href="#" 
-        onclick="$('#dishesPage').toggleClass('edit-mode')"
-        class="btn btn-lg btn-default">
-        Cancel
-    </a>
-</div>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 
-<div class="form-group">
-    <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" />
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-body">
+    <!-- Sample item -->
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 dish-item" data-bg="#34495E">
         <div class="row">
-            <div class="col-sm-4">
-                <div class="input-group">
-                    <input type="text" name="amount" class="form-control" placeholder="Amount" />
-                    <div class="input-group-btn">
-                        <select class="selectpicker" data-width="100px">
-                            <option>units</option>
-                            <option>grams</option>
-                            <option>kgs</option>
-                            <option>mls</option>
-                            <option>litres</option>
-                        </select>
-                    </div>
+            <div class="col-xs-4">
+                <div class="image">
+                    <img src="http://placehold.it/350x350" alt="" />
                 </div>
             </div>
-            <div class="col-sm-8">
-                <div class="input-group">
-                    <input type="text" name="ingredient" class="form-control" placeholder="Ingredient name" />
-                    <div class="input-group-btn">
-                        <a href="#" class="btn btn-success">Add</a>
-                    </div>
-                </div>
+            <div class="col-xs-8">
+                <h3 class="title">Spaghetti</h3>
+                <p>Ingredients: 9</p>
             </div>
         </div>
     </div>
-    <ul class="list-group" id="result">
-        <li class="list-group-item">
-            <button type="button" 
-                class="close pull-right" 
-                onclick="$(this).closest('li').remove()">&times;</button>
-            <p class="lead"><strong>Mince meat</strong> <small>400 grams</small></p>
-        </li>
-        <li class="list-group-item">
-            <button type="button" 
-                class="close pull-right" 
-                onclick="$(this).closest('li').remove()">&times;</button>
-            <p class="lead"><strong>Crushed tomatoes</strong> <small>1 cup</small></p>
-        </li>
-    </ul>
+
+</div>
+
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+    <form>
+        <div class="form-group btn-group btn-group-justified">
+            <a href="#" 
+                onclick="$('#dishesPage').toggleClass('edit-mode')"
+                class="btn btn-lg btn-primary">
+                Save
+            </a>
+            <a href="#" 
+                onclick="$('#dishesPage').toggleClass('edit-mode')"
+                class="btn btn-lg btn-default">
+                Cancel
+            </a>
+        </div>
+
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" />
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <input type="text" name="amount" class="form-control" placeholder="Amount" />
+                            <div class="input-group-btn">
+                                <select class="selectpicker" data-width="100px">
+                                    <option>units</option>
+                                    <option>grams</option>
+                                    <option>kgs</option>
+                                    <option>mls</option>
+                                    <option>litres</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <input type="text" name="ingredient" class="form-control" placeholder="Ingredient name" />
+                            <div class="input-group-btn">
+                                <a href="#" class="btn btn-success">Add</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ul class="list-group" id="result">
+                {% partial 'dishes/ingredients' %}
+            </ul>
+        </div>
+    </form>
 </div>

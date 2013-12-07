@@ -11,8 +11,10 @@ function onStart()
 
 function onSaveDish()
 {
-    
+
 }
+
+function onNewDish() {}
 
 ?>
 ==
@@ -22,7 +24,12 @@ function onSaveDish()
 
         <div
             class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-            <a href="javascript:;" class="new-dish" onclick="$('#dishesPage').toggleClass('edit-mode')">
+            <a
+                href="javascript:;" 
+                class="new-dish" 
+                data-request="onNewDish"
+                data-request-success="$('#dishesPage').toggleClass('edit-mode')"
+                data-request-update="'dishes/form': '#partialDishesForm'">
                 <i class="icon-plus"></i>
                 <p>New dish</p>
             </a>
@@ -34,35 +41,9 @@ function onSaveDish()
 
     </div>
 
-    <div class="row dish-form">
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-
-            <!-- Sample item -->
-            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 dish-item" data-bg="#34495E">
-                <div class="row">
-                    <div class="col-xs-4">
-                        <div class="image">
-                            <img src="http://placehold.it/350x350" alt="" />
-                        </div>
-                    </div>
-                    <div class="col-xs-8">
-                        <h3 class="title">Spaghetti</h3>
-                        <p>Ingredients: 9</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-            <form>
-                <!-- Form -->
-                {% partial 'dishes/form' %}
-            </form>
-        </div>
-
-
+    <!-- Form -->
+    <div class="row dish-form" id="partialDishesForm">
+        {% partial 'dishes/form' %}
     </div>
 
 </div>

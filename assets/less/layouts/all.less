@@ -32,6 +32,43 @@ header#layout-header {
             }
         }
     }
+
+    i.icon-food {
+        width: 40px;
+        height: 40px;
+        display: inline-block;
+        position: relative;
+        &:before, &:after {
+            .transition(opacity 0.5s ease);
+        }
+        &:after {
+            .opacity(0);
+            content: '';
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -20px;
+            margin-top: -17px;
+            width: 40px;
+            height: 40px;
+            background-image: url('../images/loading-indicator.svg');
+            background-size: 40px 40px;
+            background-position: 50% 50%;
+            .animation(spin 1s linear infinite);
+        }
+    }
+
+    &.loading {
+        i.icon-food {
+            &:before {
+                .opacity(0);
+            }
+            &:after {
+                .opacity(1);
+            }
+        }
+    }
 }
 
 nav#layout-nav {

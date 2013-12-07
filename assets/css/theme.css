@@ -7240,6 +7240,43 @@ header#layout-header h1 a:hover i {
   opacity: 0.8;
   filter: alpha(opacity=80);
 }
+header#layout-header i.icon-food {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  position: relative;
+}
+header#layout-header i.icon-food:before,
+header#layout-header i.icon-food:after {
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+header#layout-header i.icon-food:after {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -20px;
+  margin-top: -17px;
+  width: 40px;
+  height: 40px;
+  background-image: url('../images/loading-indicator.svg');
+  background-size: 40px 40px;
+  background-position: 50% 50%;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+header#layout-header.loading i.icon-food:before {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+header#layout-header.loading i.icon-food:after {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
 nav#layout-nav * {
   border-color: transparent !important;
 }

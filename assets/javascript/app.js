@@ -26,13 +26,21 @@ $(document).tooltip({
     selector: '[data-toggle=tooltip]'
 })
 
-
 $(document).ready(function(){
-    $('[data-toggle=popover]').popover({
-        html: true
-    })
+    $(document).render(function(){
+        $('[data-toggle=popover]').popover({
+            html: true
+        })
 
-    $('.selectpicker').selectpicker({
-        container: 'body'
+        $('.selectpicker').selectpicker({
+            container: 'body'
+        })
     })
 })
+
+$(document)
+    .on('ajaxPromise', '[data-request]', function() {
+        $('#layout-header').addClass('loading')
+    }).on('ajaxFail ajaxDone', '[data-request]', function(){
+        $('#layout-header').removeClass('loading')
+    })
