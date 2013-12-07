@@ -1,75 +1,119 @@
 .dishes-page {
 
-    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    margin: 20px;
 
-    ul.dishes {
+    //
+    // Screens
+    //
 
-        .transition(width 0.5s ease);
+    .dish-form, .dishes {
+        .transition(all 0.5s ease);
+    }
+
+    //
+    // Off screen elements
+    //
+
+    .dish-form {
         width: 100%;
+        position: absolute;
+        top: -100%;
+        left: 0;
+    }
 
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        .clearfix;
+    &.edit-mode {
+        .dishes { .opacity(0); }
+        .dish-form { top: 0; width: 100%; }
+    }
+
+    //
+    // Dish list
+    //
+
+    .dishes {
+        position: relative;
+        .transition(opacity 0.5s ease);
 
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
 
-        li {
-            flex: 0 0 350px;
+        > div {
+            flex: 0 0 auto;
             position: relative;
-            border: 2px solid transparent;
-            margin: 0 5px 5px 0;
-            padding-left: 10px;
-            color: #555;
-
-            h3.title {
-                color: #C0392B;
-            }
-
-            .image {
-                padding: 10px 0;
-                img { 
-                    width: 90px;
-                    .border-radius(999px);
-                }
-            }
-
-            .hover { display: none; }
-
-            &:hover {
-                border-color: #ECF0F1;
-                .normal { display: none; }
-                .hover { display: block; }
-            }
-
-            &.add-dish {
-                border: 2px dashed #ECF0F1;
-                a { text-decoration: none; }
-                i { 
-                    font-size:64px;
-                    color: #ECF0F1;
-                    position: absolute;
-                    left: 20px;
-                    top: 25px;
-                }
-
-                p {
-                    margin: 0 0 0 100px;
-                    line-height: 115px;
-                    color: #ECF0F1;
-                    font-size: 32px;
-                }
-            }
-
+            padding: 0 0 10px 10px;
         }
     }
 
-    &.edit-mode {
-        ul.dishes {
-            width: 400px;
+    // Dish item
+
+    .dish-item {
+        border: 2px solid transparent;
+        color: #555;
+
+        h3.title {
+            color: #C0392B;
+        }
+
+        .image {
+            padding: 10px 0;
+            img { 
+                width: 90px;
+                .border-radius(999px);
+            }
+        }
+
+        .hover { display: none; }
+
+        &:hover {
+            border-color: #ECF0F1;
+            .normal { display: none; }
+            .hover { display: block; }
         }
     }
+
+    // New dish button
+
+    .new-dish {
+        display: block;
+        border: 2px dashed #ECF0F1;
+        min-height: 100px;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        text-decoration: none;
+        i {
+            font-size:64px;
+            color: #ECF0F1;
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            margin-top: -32px;
+        }
+
+        p {
+            color: #ECF0F1;
+            font-size: 32px;
+            line-height: 64px;
+            top: 50%;
+            left: 100px;
+            margin-top: -32px;
+            position: absolute;
+        }
+
+        &:hover {
+            border-color: #BDC3C7;
+        }
+    }
+
+
+    // Dish Form
+
+
 
 }

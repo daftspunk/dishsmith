@@ -6944,92 +6944,100 @@ a .icon-flip-vertical:before {
   color: white;
 }
 .dishes-page {
-  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  margin: 20px;
 }
-.dishes-page ul.dishes {
-  -webkit-transition: width 0.5s ease;
-  transition: width 0.5s ease;
+.dishes-page .dish-form,
+.dishes-page .dishes {
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+.dishes-page .dish-form {
   width: 100%;
-  list-style: none;
-  margin: 0;
-  padding: 0;
+  position: absolute;
+  top: -100%;
+  left: 0;
+}
+.dishes-page.edit-mode .dishes {
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.dishes-page.edit-mode .dish-form {
+  top: 0;
+  width: 100%;
+}
+.dishes-page .dishes {
+  position: relative;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
 }
-.dishes-page ul.dishes:before,
-.dishes-page ul.dishes:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
-}
-.dishes-page ul.dishes:after {
-  clear: both;
-}
-.dishes-page ul.dishes:before,
-.dishes-page ul.dishes:after {
-  content: " ";
-  /* 1 */
-  display: table;
-  /* 2 */
-}
-.dishes-page ul.dishes:after {
-  clear: both;
-}
-.dishes-page ul.dishes li {
-  flex: 0 0 350px;
+.dishes-page .dishes > div {
+  flex: 0 0 auto;
   position: relative;
+  padding: 0 0 10px 10px;
+}
+.dishes-page .dish-item {
   border: 2px solid transparent;
-  margin: 0 5px 5px 0;
-  padding-left: 10px;
   color: #555;
 }
-.dishes-page ul.dishes li h3.title {
+.dishes-page .dish-item h3.title {
   color: #C0392B;
 }
-.dishes-page ul.dishes li .image {
+.dishes-page .dish-item .image {
   padding: 10px 0;
 }
-.dishes-page ul.dishes li .image img {
+.dishes-page .dish-item .image img {
   width: 90px;
   -webkit-border-radius: 999px;
   -moz-border-radius: 999px;
   border-radius: 999px;
 }
-.dishes-page ul.dishes li .hover {
+.dishes-page .dish-item .hover {
   display: none;
 }
-.dishes-page ul.dishes li:hover {
+.dishes-page .dish-item:hover {
   border-color: #ECF0F1;
 }
-.dishes-page ul.dishes li:hover .normal {
+.dishes-page .dish-item:hover .normal {
   display: none;
 }
-.dishes-page ul.dishes li:hover .hover {
+.dishes-page .dish-item:hover .hover {
   display: block;
 }
-.dishes-page ul.dishes li.add-dish {
+.dishes-page .new-dish {
+  display: block;
   border: 2px dashed #ECF0F1;
-}
-.dishes-page ul.dishes li.add-dish a {
+  min-height: 100px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
   text-decoration: none;
 }
-.dishes-page ul.dishes li.add-dish i {
+.dishes-page .new-dish i {
   font-size: 64px;
   color: #ECF0F1;
   position: absolute;
   left: 20px;
-  top: 25px;
+  top: 50%;
+  margin-top: -32px;
 }
-.dishes-page ul.dishes li.add-dish p {
-  margin: 0 0 0 100px;
-  line-height: 115px;
+.dishes-page .new-dish p {
   color: #ECF0F1;
   font-size: 32px;
+  line-height: 64px;
+  top: 50%;
+  left: 100px;
+  margin-top: -32px;
+  position: absolute;
 }
-.dishes-page.edit-mode ul.dishes {
-  width: 400px;
+.dishes-page .new-dish:hover {
+  border-color: #BDC3C7;
 }
 body {
   padding-top: 30px;

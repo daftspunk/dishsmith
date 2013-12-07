@@ -10,20 +10,52 @@ function onStart()
 ?>
 ==
 
-<div class="dishes-page edit-mode" id="dishesPage">
-    <ul class="dishes">
+<div class="dishes-page" id="dishesPage">
+    
+    <div class="dishes">
 
-        <li class="add-dish">
-            <a href="#" onclick="$('#dishesPage').toggleClass('edit-mode')">
+        <div
+            class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+            <a href="javascript:;" class="new-dish" onclick="$('#dishesPage').toggleClass('edit-mode')">
                 <i class="icon-plus"></i>
-                <p>Create dish</p>
+                <p>New dish</p>
             </a>
-        </li>
+        </div>
 
         {% partial 'dishes/dish' %}
         {% partial 'dishes/dish' %}
         {% partial 'dishes/dish' %}
         {% partial 'dishes/dish' %}
 
-    </ul>
+    </div>
+
+    <div class="row dish-form">
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+
+            {% partial 'dishes/dish' %}
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
+            <div class="btn-group btn-group-justified">
+                <a href="#" 
+                    onclick="$('#dishesPage').toggleClass('edit-mode')"
+                    class="btn btn-lg btn-success">
+                    Save
+                </a>
+                <a href="#" 
+                    onclick="$('#dishesPage').toggleClass('edit-mode')"
+                    class="btn btn-lg btn-default">
+                    Cancel
+                </a>
+            </div>
+            
+            <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" />
+
+        </div>
+
+
+
+    </div>
+
 </div>
