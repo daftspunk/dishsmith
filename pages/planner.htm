@@ -8,7 +8,7 @@ function onStart()
     $this['currentPage'] = 'plan';
 
     $user = Auth::getUser();
-    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::with('ingredients')->ofUser($user)->ofWeek('A')->get();
+    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::with('ingredients')->ofUser($user)->ofWeek($this['activeWeek'])->get();
 }
 ?>
 ==

@@ -5,6 +5,15 @@ public function onStart()
 {
     if (!Auth::check())
         return Redirect::to('/');
+
+    $this['activeWeek'] = Session::get('dishsmith_active_week', 'A');
+    $this['availableWeeks'] = Plugins\Responsiv\DishSmith\Models\Dish::getWeeksForUser(Auth::getUser());
+}
+
+public function onChangeWeek()
+{
+    Session::put('dishsmith_active_week', post('week'));
+    return Redirect::to(URL::current());
 }
 ?>
 ==
@@ -33,12 +42,26 @@ public function onStart()
                             </a>
                         </h1>
                     </header>
-                </div>
+                </div> 
                 <div class="col-sm-7">
                     <div class="active-day pull-right">
-                        <select class="selectpicker" data-width="150px" data-style="btn-primary">
-                            <option data-icon="icon-calendar-empty">Week A</option>
-                        </select>
+                        <form>
+                            <select
+                                name="week"
+                                class="selectpicker"
+                                data-width="150px"
+                                data-style="btn-primary"
+                                data-request="onChangeWeek">
+                                {% for week in availableWeeks %}
+                                    <option
+                                        value="{{ week }}"
+                                        data-icon="icon-calendar-empty"
+                                        {% if week == activeWeek %}selected="selected"{% endif %}>
+                                        Week {{ week }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </form>
                     </div>
 
                     <!-- Nav -->
