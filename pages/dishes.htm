@@ -33,11 +33,29 @@ function onStart()
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
 
-            {% partial 'dishes/dish' %}
+            <!-- Sample item -->
+            <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 dish-item" data-bg="#34495E">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="image">
+                            <img src="http://placehold.it/350x350" alt="" />
+                        </div>
+                    </div>
+                    <div class="col-xs-8">
+                        <h3 class="title">Spaghetti</h3>
+                        <p>Ingredients: 9</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-            <div class="btn-group btn-group-justified">
+
+            <form>
+
+            <!-- Form -->
+            <div class="form-group btn-group btn-group-justified">
                 <a href="#" 
                     onclick="$('#dishesPage').toggleClass('edit-mode')"
                     class="btn btn-lg btn-success">
@@ -49,11 +67,31 @@ function onStart()
                     Cancel
                 </a>
             </div>
-            
-            <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" />
+
+            <div class="form-group">
+                <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" />
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">Needs</div>
+                <div class="panel-body">
+                    
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <input type="text" name="amount" class="form-control" />
+                        </div>
+                        <div class="col-sm-8">
+                            <input type="text" name="ingredient" class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            </form>
+
 
         </div>
-
 
 
     </div>

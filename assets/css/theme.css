@@ -6979,6 +6979,7 @@ a .icon-flip-vertical:before {
   flex: 0 0 auto;
   position: relative;
   padding: 0 0 10px 10px;
+  min-height: 100px;
 }
 .dishes-page .dish-item {
   border: 2px solid transparent;
@@ -7011,7 +7012,6 @@ a .icon-flip-vertical:before {
 .dishes-page .new-dish {
   display: block;
   border: 2px dashed #ECF0F1;
-  min-height: 100px;
   position: absolute;
   top: 0;
   right: 0;
@@ -7038,6 +7038,10 @@ a .icon-flip-vertical:before {
 }
 .dishes-page .new-dish:hover {
   border-color: #BDC3C7;
+}
+.dishes-page .dish-form .dish-item {
+  border-color: #ECF0F1;
+  width: 100%;
 }
 body {
   padding-top: 30px;
