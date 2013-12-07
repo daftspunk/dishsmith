@@ -16,6 +16,29 @@ function onSaveDish()
 
 function onNewDish() {}
 
+function onAddIngredient()
+{
+    $ingredients = [];
+    $ingredientsRaw = post('ingredients');
+    if (isset($ingredientsRaw['name'])) {
+        foreach ($ingredientsRaw['name'] as $key => $value) {
+            $ingredients[] = [
+                'name' => $value,
+                'type' => $ingredientsRaw['type'][$key],
+                'amount' => $ingredientsRaw['amount'][$key]
+            ];
+        }
+    }
+
+    $ingredients[] = [
+        'name' => post('ingredient'),
+        'type' => post('type'),
+        'amount' => post('amount'),
+    ];
+
+    $this['ingredients'] = $ingredients;
+    $this['dishName'] = post('name');
+}
 ?>
 ==
 {% put scripts %}
@@ -27,6 +50,11 @@ function onNewDish() {}
         else
             $('#previewDishName').text(name)
     })
+
+    function clearIngredientsForm() {
+        $('#inputIngredientAmount, #inputIngredientName').val('')
+        $('#inputIngredientAmount').focus()
+    }
 </script>
 {% endput %}
 <div class="dishes-page" id="dishesPage">

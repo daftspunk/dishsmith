@@ -18,7 +18,10 @@
 </div>
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
-    <form>
+    <form
+        data-request="onAddIngredient"
+        data-request-update="'dishes/ingredients': '#partialDishesIngredients'"
+        data-request-success="clearIngredientsForm()">
         <div class="form-group btn-group btn-group-justified">
             <a href="#" 
                 onclick="$('#dishesPage').toggleClass('edit-mode')"
@@ -33,7 +36,7 @@
         </div>
 
         <div class="form-group">
-            <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" id="inputDishName" />
+            <input type="text" name="name" placeholder="Dish name" class="form-control input-lg" id="inputDishName" value="{{ dishName }}" />
         </div>
 
         <div class="panel panel-default">
@@ -41,9 +44,9 @@
                 <div class="row">
                     <div class="col-sm-4">
                         <div class="input-group">
-                            <input type="text" name="amount" class="form-control" placeholder="Amount" />
+                            <input type="text" name="amount" class="form-control" placeholder="Amount" id="inputIngredientAmount" />
                             <div class="input-group-btn">
-                                <select class="selectpicker" data-width="100px">
+                                <select class="selectpicker" data-width="100px" name="type">
                                     <option>units</option>
                                     <option>grams</option>
                                     <option>kgs</option>
@@ -55,15 +58,15 @@
                     </div>
                     <div class="col-sm-8">
                         <div class="input-group">
-                            <input type="text" name="ingredient" class="form-control" placeholder="Ingredient name" />
+                            <input type="text" name="ingredient" class="form-control" placeholder="Ingredient name" id="inputIngredientName" />
                             <div class="input-group-btn">
-                                <a href="#" class="btn btn-success">Add</a>
+                                <button type="submit" class="btn btn-success">Add</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <ul class="list-group" id="result">
+            <ul class="list-group" id="partialDishesIngredients">
                 {% partial 'dishes/ingredients' %}
             </ul>
         </div>

@@ -1,8 +1,11 @@
 {% for ingredient in ingredients %}
     <li class="list-group-item">
+        <input type="hidden" name="ingredients[name][]" value="{{ ingredient.name }}" />
+        <input type="hidden" name="ingredients[amount][]" value="{{ ingredient.amount }}" />
+        <input type="hidden" name="ingredients[type][]" value="{{ ingredient.type }}" />
         <button type="button" 
             class="close pull-right" 
             onclick="$(this).closest('li').remove()">&times;</button>
-        <p class="lead"><strong>Mince meat</strong> <small>400 grams</small></p>
+        <p class="lead"><strong>{{ ingredient.name }}</strong> <small>{{ ingredient.amount }} {{ ingredient.type }}</small></p>
     </li>
 {% endfor %}
