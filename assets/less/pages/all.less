@@ -10,7 +10,18 @@
 
 .home-page {
 
-    h1 { 
+    p {
+        color: white;
+    }
+    a {
+        color: white;
+        text-decoration: none;
+        &:hover { color: #ECF0F1; }
+    }
+    margin-top: 50px;
+
+    h1 {
+        color: #555;
         display: block;
         background: white;
         .border-radius(9999px);
@@ -19,6 +30,23 @@
         margin: 0 auto;
         line-height: 200px;
         text-align: center;
+        margin-bottom: 15px;
+        white-space: nowrap;
+        span { font-style: italic; }
+    }
+
+    a.help-popover {
+        margin-left: 3px;
+    }
+
+    p.lead {
+        text-align: justify;
+        display: block;
+    }
+
+    p.no-spammy {
+        padding-top: 5px;
+        color: #ECF0F1;
     }
 
 }

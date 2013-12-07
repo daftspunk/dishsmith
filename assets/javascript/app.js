@@ -23,10 +23,15 @@
  */
 
 $(document).tooltip({
-    selector: "[data-toggle=tooltip]"
+    selector: '[data-toggle=tooltip]'
 })
 
+
 $(document).ready(function(){
+    $('[data-toggle=popover]').popover({
+        html: true
+    })
+
     $('.selectpicker').selectpicker({
         container: 'body'
     })

@@ -7134,7 +7134,21 @@ a .icon-flip-vertical:before {
   line-height: 20px;
   border-width: 2px;
 }
+.home-page {
+  margin-top: 50px;
+}
+.home-page p {
+  color: white;
+}
+.home-page a {
+  color: white;
+  text-decoration: none;
+}
+.home-page a:hover {
+  color: #ECF0F1;
+}
 .home-page h1 {
+  color: #555;
   display: block;
   background: white;
   -webkit-border-radius: 9999px;
@@ -7145,6 +7159,22 @@ a .icon-flip-vertical:before {
   margin: 0 auto;
   line-height: 200px;
   text-align: center;
+  margin-bottom: 15px;
+  white-space: nowrap;
+}
+.home-page h1 span {
+  font-style: italic;
+}
+.home-page a.help-popover {
+  margin-left: 3px;
+}
+.home-page p.lead {
+  text-align: justify;
+  display: block;
+}
+.home-page p.no-spammy {
+  padding-top: 5px;
+  color: #ECF0F1;
 }
 body {
   padding-top: 30px;
@@ -7209,6 +7239,16 @@ footer#layout-footer a {
 }
 footer#layout-footer a:hover {
   color: #BDC3C7;
+}
+.form-control {
+  -webkit-transition: none;
+  transition: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 .callout {
   margin-bottom: 20px;
