@@ -16,6 +16,7 @@ function onSaveDish()
     if (post('dish_id')) {
         $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
         $dish->ingredients()->detach();
+        $dish->save(['name' => post('name')]);
     }
     else {
         $dish = Plugins\Responsiv\DishSmith\Models\Dish::create([
@@ -43,11 +44,14 @@ function onSaveDish()
 function onAddIngredient()
 {
     $ingredients = $this->getIngredients();
-    $ingredients[] = [
-        'name' => post('ingredient'),
-        'type' => post('type'),
-        'amount' => post('amount'),
-    ];
+
+    if (trim(post('ingredient')) != '') {
+        $ingredients[] = [
+            'name' => post('ingredient'),
+            'type' => post('type', 'units'),
+            'amount' => post('amount', 1),
+        ];
+    }
 
     $this['ingredients'] = $ingredients;
     $this['dish'] = ['name' => post('name')];
@@ -125,6 +129,12 @@ function onNewDish()
     function removeIngredientItem(el) {
         $(el).closest('li').remove()
         $('#previewIngredientNumber').text($('#partialDishesIngredients li').length)
+    }
+
+    function toggleEditMode() {
+        $('#dishesPage').toggleClass('edit-mode');
+        if ($('#dishesPage').hasClass('edit-mode'))
+            $('#inputDishName').focus();
     }
 </script>
 {% endput %}
