@@ -10,7 +10,7 @@
             </div>
             <div class="col-xs-8">
                 <h3 class="title" id="previewDishName"><span class="text-muted">No name</span></h3>
-                <p>Ingredients: 9</p>
+                <p>Ingredients: <span id="previewIngredientNumber">0</span></p>
             </div>
         </div>
     </div>
@@ -23,12 +23,14 @@
         data-request-update="'dishes/ingredients': '#partialDishesIngredients'"
         data-request-success="clearIngredientsForm()">
         <div class="form-group btn-group btn-group-justified">
-            <a href="#" 
-                onclick="$('#dishesPage').toggleClass('edit-mode')"
+            <a href="javascript:;"
+                data-request="onSaveDish"
+                data-request-update="'dishes/dishes': '#partialDishesDishes'"
+                data-request-success="$('#dishesPage').toggleClass('edit-mode')"
                 class="btn btn-lg btn-primary">
                 Save
             </a>
-            <a href="#" 
+            <a href="javascript:;"
                 onclick="$('#dishesPage').toggleClass('edit-mode')"
                 class="btn btn-lg btn-default">
                 Cancel

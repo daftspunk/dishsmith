@@ -1,0 +1,21 @@
+{% for dish in dishes %}
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 dish-item" data-bg="#34495E">
+        <div class="row">
+            <div class="col-xs-4">
+                <div class="image">
+                    <img src="http://placehold.it/350x350" alt="" />
+                </div>
+            </div>
+            <div class="col-xs-8">
+                <h3 class="title">Spaghetti</h3>
+                <div class="normal">
+                    <p>Last ate: <strong>7th January 2013</strong></p>
+                </div>
+                <div class="hover">
+                    <a href="#" class="btn btn-sm btn-default">Modify</a>
+                    <a href="#" class="btn btn-sm btn-danger">Remove</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}

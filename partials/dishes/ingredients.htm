@@ -5,7 +5,7 @@
         <input type="hidden" name="ingredients[type][]" value="{{ ingredient.type }}" />
         <button type="button" 
             class="close pull-right" 
-            onclick="$(this).closest('li').remove()">&times;</button>
+            onclick="removeIngredientItem(this)">&times;</button>
         <p class="lead"><strong>{{ ingredient.name }}</strong> <small>{{ ingredient.amount }} {{ ingredient.type }}</small></p>
     </li>
 {% endfor %}

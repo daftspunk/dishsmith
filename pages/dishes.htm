@@ -11,12 +11,41 @@ function onStart()
 
 function onSaveDish()
 {
+    $user = Auth::getUser();
+    $dish = Plugins\Responsiv\DishSmith\Models\Dish::create([
+                'name' => post('name'),
+                'user_id' => $user->id
+            ]);
+
+    $ingredients = $this->getIngredients();
+
+    foreach ($ingredients => $ingredientData) {
+        $ingredient = Plugins\Responsiv\DishSmith\Models\Ingredient::firstOrCreate(['name' => $ingredientData['name']]);
+
+        $dish->ingredients()->attach($ingredient->id, [
+            'type' => trim($ingredientData['type']),
+            'amount' => trim($ingredientData['amount'])
+        ])
+    }
 
 }
 
 function onNewDish() {}
 
 function onAddIngredient()
+{
+    $ingredients = $this->getIngredients();
+    $ingredients[] = [
+        'name' => post('ingredient'),
+        'type' => post('type'),
+        'amount' => post('amount'),
+    ];
+
+    $this['ingredients'] = $ingredients;
+    $this['dishName'] = post('name');
+}
+
+function getIngredients()
 {
     $ingredients = [];
     $ingredientsRaw = post('ingredients');
@@ -30,14 +59,7 @@ function onAddIngredient()
         }
     }
 
-    $ingredients[] = [
-        'name' => post('ingredient'),
-        'type' => post('type'),
-        'amount' => post('amount'),
-    ];
-
-    $this['ingredients'] = $ingredients;
-    $this['dishName'] = post('name');
+    return $ingredients;
 }
 ?>
 ==
@@ -54,15 +76,21 @@ function onAddIngredient()
     function clearIngredientsForm() {
         $('#inputIngredientAmount, #inputIngredientName').val('')
         $('#inputIngredientAmount').focus()
+        $('#previewIngredientNumber').text($('#partialDishesIngredients li').length)
+    }
+
+    function removeIngredientItem(el) {
+        $(el).closest('li').remove()
+        $('#previewIngredientNumber').text($('#partialDishesIngredients li').length)
     }
 </script>
 {% endput %}
+
 <div class="dishes-page" id="dishesPage">
 
     <div class="dishes">
 
-        <div
-            class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
             <a
                 href="javascript:;" 
                 class="new-dish" 
@@ -74,9 +102,9 @@ function onAddIngredient()
             </a>
         </div>
 
-        {% for dish in dishes %}
-            {% partial 'dishes/dish' dish=dish %}
-        {% endfor %}
+        <div id="partialDishesDishes">
+            {% partial 'dishes/dishes' %}
+        </div>
 
     </div>
 
