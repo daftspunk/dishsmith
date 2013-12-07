@@ -3,7 +3,7 @@ description = "Default layout"
 <!DOCTYPE html>
 <html>
     <head>
-        <title>October CMS - {{ page.title }}</title>
+        <title>{{ page.title }} - DishSmith</title>
         <meta name="author" content="October CMS">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}" />
@@ -13,10 +13,26 @@ description = "Default layout"
     </head>
     <body>
 
-        <!-- Header -->
-        <header id="layout-header">
-
-        </header>
+        <div class="container" id="layout-header-container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <!-- Header -->
+                    <header id="layout-header">
+                        <h1><i>Dish</i> <b>Smith</b></h1>
+                    </header>
+                </div>
+                <div class="col-sm-9">
+                    <!-- Nav -->
+                    <nav id="layout-nav">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a href="#">Dish</a></li>
+                            <li><a href="#">Plan</a></li>
+                            <li><a href="#">Shop</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
 
         <!-- Content -->
         <section id="layout-content">

@@ -29,5 +29,3 @@ You can find this plugin at the [dishsmith-plugin repo](https://github.com/dafts
 3. Import the Theme in to October CMS
 4. Install the [DishSmith Plugin](https://github.com/daftspunk/dishsmith-plugin)
 5. Get cooking!
-
-
