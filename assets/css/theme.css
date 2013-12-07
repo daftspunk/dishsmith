@@ -7206,6 +7206,9 @@ a .icon-flip-vertical:before {
   padding-top: 5px;
   color: #ECF0F1;
 }
+.home-page .alert {
+  text-align: center;
+}
 .home-page .alert a {
   color: #2980B9;
 }

@@ -2,6 +2,34 @@ title = "Dish Smith"
 url = "/"
 layout = "blank"
 ==
+<?php
+public function onEnter()
+{
+    $rules = [
+        'email'    => 'required|email|min:2|max:64',
+        'password' => 'required|min:2'
+    ];
+
+    $validation = Validator::make(post(), $rules);
+    if ($validation->fails())
+        throw new October\Rain\Support\ValidationException($validation);
+}
+?>
+==
+{% put scripts %}
+<script>
+jQuery(document).ready(function($){
+    $(document).on('ajaxPromise', '#entranceForm', function() {
+        $('#logoCircle').addClass('loading')
+    }).on('ajaxDone', '#entranceForm', function() {
+        $('#logoCircle').removeClass('loading')
+    }).on('ajaxFail', '#entranceForm', function() {
+        $('#logoCircle').removeClass('loading')
+        $('#entranceError').show().html($('#entranceForm').data('error-message'))
+    })
+})
+</script>
+{% endput %}
 
 <div class="home-page">
 
@@ -21,12 +49,15 @@ layout = "blank"
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3">
 
-<!-- 
-            <div class="alert alert-danger lead">
+            <div id="entranceError" class="alert alert-danger lead" style="display: none">
                 Those details were incorrect. <a href="#">Forgot your password?</a>
             </div>
- -->
-            <form class="form-inline text-center">
+
+            <form
+                id="entranceForm"
+                class="form-inline text-center"
+                data-request-error="return false"
+                data-request="onEnter">
                 <div class="form-group">
                     <label class="sr-only" for="inputEmail">Email address</label>
                     <input type="email" class="form-control" id="inputEmail" placeholder="Enter email">
