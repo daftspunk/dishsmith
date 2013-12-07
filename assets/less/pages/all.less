@@ -10,29 +10,59 @@
 
 .home-page {
 
+    margin-top: 50px;
+
     p {
         color: white;
     }
+
     a {
         color: white;
         text-decoration: none;
         &:hover { color: #ECF0F1; }
     }
-    margin-top: 50px;
 
-    h1 {
-        color: #555;
+    .logo-circle {
         display: block;
+        position: relative;
         background: white;
         .border-radius(9999px);
         width: 200px;
         height: 200px;
-        margin: 0 auto;
-        line-height: 200px;
-        text-align: center;
         margin-bottom: 15px;
-        white-space: nowrap;
-        span { font-style: italic; }
+        .transition(background 0.5s ease);
+
+        h1 {
+            color: #555;
+            margin: 0 auto;
+            line-height: 200px;
+            text-align: center;
+            white-space: nowrap;
+            .transition(opacity 0.5s ease);
+            span { font-style: italic; }
+        }
+
+        &.loading {
+            background: rgba(255,255,255,.5);
+
+            &:after {
+                content: ' ';
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                margin-left: -50px;
+                margin-top: -50px;
+                width: 100px;
+                height: 100px;
+                background-image: url('../images/loading-indicator.svg');
+                background-size: 100px 100px;
+                background-position: 50% 50%;
+                .animation(spin 1s linear infinite);
+            }
+
+            h1 { .opacity(.5); }
+        }
     }
 
     a.help-popover {
@@ -47,6 +77,11 @@
     p.no-spammy {
         padding-top: 5px;
         color: #ECF0F1;
+    }
+
+    .alert a {
+        color: #2980B9;
+        &:hover { color: #3498DB; }
     }
 
 }

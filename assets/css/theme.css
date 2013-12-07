@@ -7147,23 +7147,53 @@ a .icon-flip-vertical:before {
 .home-page a:hover {
   color: #ECF0F1;
 }
-.home-page h1 {
-  color: #555;
+.home-page .logo-circle {
   display: block;
+  position: relative;
   background: white;
   -webkit-border-radius: 9999px;
   -moz-border-radius: 9999px;
   border-radius: 9999px;
   width: 200px;
   height: 200px;
+  margin-bottom: 15px;
+  -webkit-transition: background 0.5s ease;
+  transition: background 0.5s ease;
+}
+.home-page .logo-circle h1 {
+  color: #555;
   margin: 0 auto;
   line-height: 200px;
   text-align: center;
-  margin-bottom: 15px;
   white-space: nowrap;
+  -webkit-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
 }
-.home-page h1 span {
+.home-page .logo-circle h1 span {
   font-style: italic;
+}
+.home-page .logo-circle.loading {
+  background: rgba(255, 255, 255, 0.5);
+}
+.home-page .logo-circle.loading:after {
+  content: ' ';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+  width: 100px;
+  height: 100px;
+  background-image: url('../images/loading-indicator.svg');
+  background-size: 100px 100px;
+  background-position: 50% 50%;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+.home-page .logo-circle.loading h1 {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }
 .home-page a.help-popover {
   margin-left: 3px;
@@ -7175,6 +7205,12 @@ a .icon-flip-vertical:before {
 .home-page p.no-spammy {
   padding-top: 5px;
   color: #ECF0F1;
+}
+.home-page .alert a {
+  color: #2980B9;
+}
+.home-page .alert a:hover {
+  color: #3498DB;
 }
 body {
   padding-top: 30px;
