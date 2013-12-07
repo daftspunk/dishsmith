@@ -6912,7 +6912,7 @@ a .icon-flip-vertical:before {
   list-style: none;
   margin: 0;
   padding: 0;
-  color: #666;
+  color: #555;
   font-size: 16px;
   overflow: hidden;
 }
@@ -6950,6 +6950,9 @@ a .icon-flip-vertical:before {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 .dishes-page ul.dishes:before,
 .dishes-page ul.dishes:after {
@@ -6972,22 +6975,55 @@ a .icon-flip-vertical:before {
   clear: both;
 }
 .dishes-page ul.dishes li {
-  float: left;
-  width: 350px;
+  flex: 0 0 350px;
+  position: relative;
   border: 2px solid transparent;
+  margin: 0 5px 5px 0;
+  padding-left: 10px;
+  color: #555;
+}
+.dishes-page ul.dishes li h3.title {
+  color: #C0392B;
 }
 .dishes-page ul.dishes li .image {
   padding: 10px 0;
-  text-align: center;
 }
 .dishes-page ul.dishes li .image img {
-  width: 95%;
+  width: 90px;
   -webkit-border-radius: 999px;
   -moz-border-radius: 999px;
   border-radius: 999px;
 }
+.dishes-page ul.dishes li .hover {
+  display: none;
+}
 .dishes-page ul.dishes li:hover {
-  border-color: #ccc;
+  border-color: #ECF0F1;
+}
+.dishes-page ul.dishes li:hover .normal {
+  display: none;
+}
+.dishes-page ul.dishes li:hover .hover {
+  display: block;
+}
+.dishes-page ul.dishes li.add-dish {
+  border: 2px dashed #ECF0F1;
+}
+.dishes-page ul.dishes li.add-dish a {
+  text-decoration: none;
+}
+.dishes-page ul.dishes li.add-dish i {
+  font-size: 64px;
+  color: #ECF0F1;
+  position: absolute;
+  left: 20px;
+  top: 25px;
+}
+.dishes-page ul.dishes li.add-dish p {
+  margin: 0 0 0 100px;
+  line-height: 115px;
+  color: #ECF0F1;
+  font-size: 32px;
 }
 body {
   padding-top: 30px;
@@ -7001,6 +7037,18 @@ header#layout-header h1 {
   margin: 0;
   color: white;
   font-weight: bold;
+}
+header#layout-header h1 span {
+  font-style: italic;
+}
+header#layout-header h1 a {
+  color: white;
+  text-decoration: none;
+  display: block;
+}
+header#layout-header h1 a:hover i {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
 }
 nav#layout-nav * {
   border-color: transparent !important;
