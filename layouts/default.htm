@@ -15,15 +15,15 @@ description = "Default layout"
 
         <div class="container" id="layout-header-container">
             <div class="row">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <!-- Header -->
                     <header id="layout-header">
-                        <h1><i>Dish</i> <b>Smith</b></h1>
+                        <h1><i class="icon-food"></i> <i>Dish</i> Smith</h1>
                     </header>
                 </div>
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <!-- Nav -->
-                    <nav id="layout-nav">
+                    <nav id="layout-nav" class="pull-right">
                         <ul class="nav nav-tabs">
                             <li class="active"><a href="#">Dish</a></li>
                             <li><a href="#">Plan</a></li>
@@ -36,7 +36,9 @@ description = "Default layout"
 
         <!-- Content -->
         <section id="layout-content">
-            {% page %}
+            <div class="container">
+                {% page %}
+            </div>
         </section>
 
         <!-- Footer -->
@@ -66,7 +68,6 @@ description = "Default layout"
             s.parentNode.insertBefore(wf, s);
           })(); 
         </script>
-
 
     </body>
 </html>

@@ -4,36 +4,62 @@
 // Styles specific to different page layouts.
 //
 
+@import "../theme/boot";
+
 // Used by the fixed navigation
 body {
-    padding-top: 50px;
+    padding-top: 30px;
     background: #2980B9;
 }
 
-#layout-header-container > .row {
-    padding-bottom: 30px;
+#layout-header-container {
+    padding-bottom: 0;
 }
 
 header#layout-header {
     h1 {
-        margin-top: 0;
-        text-align: center;
+        font-size: 48px;
+        margin: 0;
         color: white;
         font-weight: bold;
     }
 }
 
 nav#layout-nav {
+    * { border-color: transparent !important; }
+    ul {
+        margin-top: 15px;
+    }
     li {
-        a { color: white; }
+        margin: 0 5px;
+
+        a {
+            color: white;
+            font-size: 18px;
+            
+            &:hover {
+                color: #C0392B;
+            }
+        }
+        &.active { 
+            a {
+                color: #C0392B;
+            }
+        }
     }
 }
 
-section#layout-content {
+section#layout-content .container {
     background: white;
+    .border-radius(5px);
+    border: 1px solid #ddd;
+    border-top: none;
+    position: relative;
+    top: -2px;
 }
 
 footer#layout-footer {
+    padding: 20px 0;
     color: #ECF0F1;
 
     a { color: #ECF0F1;
