@@ -8,6 +8,12 @@ public function onStart()
 
     $this['activeWeek'] = Session::get('dishsmith_active_week', 'A');
     $this['availableWeeks'] = Plugins\Responsiv\DishSmith\Models\Dish::getWeeksForUser(Auth::getUser());
+
+    // Reset the active week because it is no longer available
+    if (!in_array($this['activeWeek'], $this['availableWeeks'])) {
+        Session::put('dishsmith_active_week', 'A');
+        $this['activeWeek'] = 'A';
+    }
 }
 
 public function onChangeWeek()
