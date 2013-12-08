@@ -10,6 +10,8 @@
 =require modernizr
 =require mousewheel
 =require dragscroll
+=require typeahead
+=require sortable
 =require ../vendor/bootstrap/js/transition
 =require ../vendor/bootstrap/js/alert
 =require ../vendor/bootstrap/js/button

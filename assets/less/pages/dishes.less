@@ -1,5 +1,23 @@
 @import "../theme/boot";
 
+//
+// Draggable
+//
+
+body.dragging, body.dragging * {
+    cursor: move !important;
+}
+
+.dragged {
+    position: absolute !important;
+    .opacity(.5);
+    z-index: 2000;
+}
+
+.dish-placeholder {
+    background: #ECF0F1;
+}
+
 .dishes-page {
 
     position: relative;
@@ -20,6 +38,10 @@
 
     .dishes {
         top: 0;
+    }
+
+    .typeahead {
+        z-index: 999;
     }
 
     .dish-form {
@@ -92,6 +114,12 @@
             border-color: #ECF0F1;
             .normal { display: none; }
             .hover { display: block; }
+        }
+
+        &.dragged {
+            border-color: #ECF0F1;
+            .normal { display: block; }
+            .hover { display: none; }
         }
     }
 

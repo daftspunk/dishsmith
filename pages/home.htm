@@ -36,6 +36,7 @@ public function onEnter()
         'password' => post('password')
     ], true);
 
+    Session::put('dishsmith_active_week', 'A');
     return Redirect::to('dishes');
 }
 ?>

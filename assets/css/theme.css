@@ -6881,6 +6881,7 @@ a .icon-flip-vertical:before {
   flex: 0 0 200px;
   position: relative;
   border: 2px solid #ECF0F1;
+  min-height: 200px;
 }
 .planner-page ul.dishes > li.start-banner {
   flex: 0 0 50px;
@@ -6966,6 +6967,19 @@ a .icon-flip-vertical:before {
   background: #F1C40F;
   color: white;
 }
+body.dragging,
+body.dragging * {
+  cursor: move !important;
+}
+.dragged {
+  position: absolute !important;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  z-index: 2000;
+}
+.dish-placeholder {
+  background: #ECF0F1;
+}
 .dishes-page {
   position: relative;
   overflow: hidden;
@@ -6978,6 +6992,9 @@ a .icon-flip-vertical:before {
 }
 .dishes-page .dishes {
   top: 0;
+}
+.dishes-page .typeahead {
+  z-index: 999;
 }
 .dishes-page .dish-form {
   width: 100%;
@@ -7044,6 +7061,15 @@ a .icon-flip-vertical:before {
 }
 .dishes-page .dish-item:hover .hover {
   display: block;
+}
+.dishes-page .dish-item.dragged {
+  border-color: #ECF0F1;
+}
+.dishes-page .dish-item.dragged .normal {
+  display: block;
+}
+.dishes-page .dish-item.dragged .hover {
+  display: none;
 }
 .dishes-page .new-dish {
   display: block;

@@ -104,9 +104,22 @@ function onModifyDish()
         $this->onNewDish();
 }
 
-function onNewDish() 
+function onNewDish()
 {
     $this['ingredientCount'] = 0;
+}
+
+function onSortDishes()
+{
+    if ($sortData = post('sortOrder')) {
+        $ids = array_keys($sortData);
+        $orders = array_values($sortData);
+
+        $dish = new Plugins\Responsiv\DishSmith\Models\Dish;
+        $dish->setSortableOrder($ids, $orders);
+    }
+
+    $this->onStart();
 }
 ?>
 ==
@@ -136,9 +149,38 @@ function onNewDish()
         if ($('#dishesPage').hasClass('edit-mode'))
             $('#inputDishName').focus();
     }
+
+    $(document).render(function(){
+
+        var placeholderEl = $('<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 dish-placeholder" />')
+        
+        $('#partialDishesDishes').sortable({
+            containerSelector: 'div.dishes',
+            itemSelector: '.dish-item',
+            placeholder: placeholderEl,
+            onDrop: function ($item, container, _super) {
+                _super($item, container)
+
+                /*
+                 * Build an object of ID:ORDER
+                 */
+                var orderData = {}
+
+                $('#partialDishesDishes .dish-item').each(function(index){
+                    var id = $(this).data('dish-id')
+                    orderData[id] = index + 1
+                })
+
+                $('#partialDishesDishes').request('onSortDishes', {
+                    data: { sortOrder: orderData },
+                    update: { 'dishes/dishes': '#partialDishesDishes' }
+                })
+            },
+            distance: 10
+        })
+    })
 </script>
 {% endput %}
-
 <div class="dishes-page" id="dishesPage">
 
     <div id="partialDishesDishes" class="dishes">
