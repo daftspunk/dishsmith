@@ -7280,6 +7280,12 @@ body.drag * {
   cursor: -webkit-grab !important;
   cursor: -moz-grab !important;
 }
+.attachment-input {
+  position: absolute;
+  visibility: hidden;
+  width: 10px;
+  opacity: 0;
+}
 body.default-layout #layout-header-container {
   padding-top: 40px;
   padding-bottom: 0;

@@ -1,0 +1,36 @@
+<!-- Sample item -->
+<div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 dish-item">
+    <div class="row">
+        <div class="col-xs-4">
+            <div class="image">
+                <img src="{{ dishPhoto }}" alt="" />
+            </div>
+        </div>
+        <div class="col-xs-8">
+            <h3 class="title" id="previewDishName">
+                {% if dish.name %}
+                    {{ dish.name }}
+                {% else %}
+                    <span class="text-muted">No name</span>
+                {% endif %}
+            </h3>
+            <p><i class="icon-shopping-cart"></i> Ingredients: <span id="previewIngredientNumber">{{ ingredientCount }}</span></p>
+        </div>
+    </div>
+</div>
+<div class="form-group btn-group btn-group-justified">
+    <a href="javascript:;" id="buttonUploadPic" class="btn btn-default btn-lg">Upload Dish Pic</a>
+</div>
+
+<!-- Progress bar -->
+<div class="uploader-progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+<div class="uploader-loading"></div>
+
+<!-- Upload form -->
+<input
+    id="inputFileData"
+    type="file"
+    name="file_data"
+    class="attachment-input">

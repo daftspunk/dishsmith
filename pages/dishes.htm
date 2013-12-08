@@ -5,8 +5,43 @@ layout = "default"
 <?php
 function onStart()
 {
+    if (post('X_OCTOBER_FILEUPLOAD') == 'X_DISH_PIC_UPLOAD')
+        $this->processFileUpload();
+
     $this['currentPage'] = 'dish';
     $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
+}
+
+function processFileUpload()
+{
+    try {
+        $uploadedFile = Input::file('file_data');
+
+        $validationRules = ['max:'.Modules\System\Models\File::getMaxFilesize()];
+        $validationRules[] = 'mimes:jpg,jpeg,bmp,png';
+
+        $validation = Validator::make(
+            ['file_data' => $uploadedFile],
+            ['file_data' => $validationRules]
+        );
+
+        if ($validation->fails())
+            throw new October\Rain\Support\ValidationException($validation);
+
+        if (!$uploadedFile->isValid())
+            throw new Exception('File is not valid');
+
+        $file = new Modules\System\Models\File();
+        $file->data = $uploadedFile;
+        $file->save();
+
+        $dish = new Plugins\Responsiv\DishSmith\Models\Dish;
+        $dish->photo()->add($file, post('session_key'));
+        die('success');
+
+    } catch (\Exception $ex) {
+        die($ex->getMessage());
+    }
 }
 
 function onSaveDish()
@@ -16,13 +51,13 @@ function onSaveDish()
     if (post('dish_id')) {
         $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
         $dish->ingredients()->detach();
-        $dish->save(['name' => post('name')]);
+        $dish->save(['name' => post('name')], post('session_key'));
     }
     else {
         $dish = Plugins\Responsiv\DishSmith\Models\Dish::create([
                 'name' => post('name'),
                 'user_id' => $user->id
-            ]);
+            ], post('session_key'));
     }
 
     if (!$dish)
@@ -92,13 +127,17 @@ function onDeleteDish()
 function onModifyDish()
 {
     if (!post('dish_id'))
-        return;
+        $this->onNewDish();
 
     $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->find(post('dish_id'));
     if ($dish) {
         $this['dish'] = $dish;
         $this['ingredients'] = $dish->getIngredients();
         $this['ingredientCount'] = $dish->ingredients()->count();
+        $this['sessionKey'] = post('session_key', uniqid());
+
+        $photo = $dish->photo()->withDeferred($this['sessionKey'])->first();
+        $this['dishPhoto'] = ($photo) ? $photo->getPath() : 'http://placehold.it/350x350';
     }
     else
         $this->onNewDish();
@@ -106,6 +145,12 @@ function onModifyDish()
 
 function onNewDish()
 {
+    $dish = new Plugins\Responsiv\DishSmith\Models\Dish;
+    $this['sessionKey'] = post('session_key', uniqid());
+
+    $photo = $dish->photo()->withDeferred($this['sessionKey'])->first();
+    $this['dishPhoto'] = ($photo) ? $photo->getPath() : 'http://placehold.it/350x350';
+
     $this['ingredientCount'] = 0;
 }
 
@@ -151,9 +196,8 @@ function onSortDishes()
     }
 
     $(document).render(function(){
-
         var placeholderEl = $('<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 dish-placeholder" />')
-        
+
         $('#partialDishesDishes').sortable({
             containerSelector: 'div.dishes',
             itemSelector: '.dish-item',

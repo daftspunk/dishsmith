@@ -1,33 +1,26 @@
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
+<form id="formDishPreview">
 
-    <!-- Sample item -->
-    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 dish-item" data-bg="#34495E">
-        <div class="row">
-            <div class="col-xs-4">
-                <div class="image">
-                    <img src="http://placehold.it/350x350" alt="" />
-                </div>
-            </div>
-            <div class="col-xs-8">
-                <h3 class="title" id="previewDishName">
-                    {% if dish.name %}
-                        {{ dish.name }}
-                    {% else %}
-                        <span class="text-muted">No name</span>
-                    {% endif %}
-                </h3>
-                <p><i class="icon-shopping-cart"></i> Ingredients: <span id="previewIngredientNumber">{{ ingredientCount }}</span></p>
-            </div>
-        </div>
+    <input type="hidden" name="session_key" value="{{ sessionKey }}" />
+    {% if dish.id %}<input type="hidden" name="dish_id" value="{{ dish.id }}" />{% endif %}
+
+    <div 
+        id="partialDishesPreview"
+        class="col-xs-12 col-sm-12 col-md-6 col-lg-4"
+        data-control="fileupload"
+        data-upload-input="#inputFileData"
+        data-upload-link="#buttonUploadPic"
+        data-unique-id="X_DISH_PIC_UPLOAD">
+        {% partial 'dishes/preview' %}
     </div>
 
-</div>
+</form>
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-8">
     <form
         data-request="onAddIngredient"
         data-request-update="'dishes/ingredients': '#partialDishesIngredients'"
         data-request-success="clearIngredientsForm()">
+        <input type="hidden" name="session_key" value="{{ sessionKey }}" />
         {% if dish.id %}<input type="hidden" name="dish_id" value="{{ dish.id }}" />{% endif %}
 
         <div class="form-group btn-group btn-group-justified">
