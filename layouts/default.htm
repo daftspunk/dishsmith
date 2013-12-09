@@ -48,33 +48,36 @@ public function onLogout()
                 <div class="col-sm-5">
                     <!-- Header -->
                     <header id="layout-header">
-                        <h1>
+                        <h1 class="logo">
                             <a href="/">
                                 <i class="icon-food"></i> <span>Dish</span> Smith
                             </a>
                         </h1>
                     </header>
-                </div> 
+                </div>
+
                 <div class="col-sm-7">
-                    <div class="active-day pull-right">
-                        <form>
-                            <select
-                                name="week"
-                                class="selectpicker"
-                                data-width="150px"
-                                data-style="btn-primary"
-                                data-request="onChangeWeek">
-                                {% for week in availableWeeks %}
-                                    <option
-                                        value="{{ week }}"
-                                        data-icon="icon-calendar-empty"
-                                        {% if week == activeWeek %}selected="selected"{% endif %}>
-                                        &nbsp; Week {{ week }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </form>
-                    </div>
+                    {% if availableWeeks %}
+                        <div class="active-day pull-right">
+                            <form>
+                                <select
+                                    name="week"
+                                    class="selectpicker"
+                                    data-width="150px"
+                                    data-style="btn-primary"
+                                    data-request="onChangeWeek">
+                                    {% for week in availableWeeks %}
+                                        <option
+                                            value="{{ week }}"
+                                            data-icon="icon-calendar-empty"
+                                            {% if week == activeWeek %}selected="selected"{% endif %}>
+                                            &nbsp; Week {{ week }}
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </form>
+                        </div>
+                    {% endif %}
 
                     <!-- Nav -->
                     <nav id="layout-nav" class="pull-right">

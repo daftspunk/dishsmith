@@ -4,8 +4,6 @@
 // Styles specific to different page layouts.
 //
 
-@import "../theme/boot";
-
 body {
     background: #2980B9;
 }
@@ -38,7 +36,10 @@ body.default-layout {
     }
 
     header#layout-header {
-        h1 {
+        position: relative;
+            vertical-align: bottom;
+
+        h1.logo {
             font-size: 48px;
             margin: 0;
             color: white;
@@ -49,7 +50,7 @@ body.default-layout {
                 text-decoration: none;
                 display: block;
                 &:hover i {
-                    .opacity(.8); 
+                    .opacity(.8);
                 }
             }
         }
