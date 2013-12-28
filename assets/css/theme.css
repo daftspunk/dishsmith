@@ -7260,11 +7260,11 @@ body.dragging * {
   color: white;
 }
 .home-page a {
-  color: white;
+  color: #ECF0F1;
   text-decoration: none;
 }
 .home-page a:hover {
-  color: #ECF0F1;
+  color: white;
 }
 .home-page .logo-circle {
   display: block;

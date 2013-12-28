@@ -18,7 +18,7 @@ public function onEnter()
 
     $validation = Validator::make(post(), $rules);
     if ($validation->fails())
-        throw new October\Rain\Support\ValidationException($validation);
+        throw new October\Rain\Exceptions\ValidationException($validation);
 
     $user = Auth::findUserByLogin(post('email'));
     if (!$user) {
@@ -119,6 +119,10 @@ jQuery(document).ready(function($){
                         <p>It is an honour to receive this award, and thank-you to <a href="http://sproutback.com/" target="_blank">Sproutback</a> and <a href="http://hact.org.au" target="_blank">HACT</a> for hosting such a great event! See you all next year for more good times!</p>
                     </div>
                 </div>
+            </div>
+
+            <div class="text-center">
+                <p class="muted credit">Powered by <a href="http://octobercms.com/" target="_blank"><i class="icon-leaf"></i> October CMS</a></p>
             </div>
 
         </div>
