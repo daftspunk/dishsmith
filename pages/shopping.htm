@@ -8,8 +8,8 @@ function onStart()
     $this['currentPage'] = 'shop';
 
     $user = Auth::getUser();
-    $dishes = Plugins\Responsiv\DishSmith\Models\Dish::with('ingredients')->ofUser($user)->ofWeek($this['activeWeek'])->get();
-    $this['ingredients'] = Plugins\Responsiv\DishSmith\Models\Dish::mergeIngredients($dishes);
+    $dishes = Responsiv\DishSmith\Models\Dish::with('ingredients')->ofUser($user)->ofWeek($this['activeWeek'])->get();
+    $this['ingredients'] = Responsiv\DishSmith\Models\Dish::mergeIngredients($dishes);
 }
 ?>
 ==

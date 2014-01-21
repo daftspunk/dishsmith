@@ -9,7 +9,7 @@ function onStart()
         $this->processFileUpload();
 
     $this['currentPage'] = 'dish';
-    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
+    $this['dishes'] = Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
 }
 
 function processFileUpload()
@@ -17,7 +17,7 @@ function processFileUpload()
     try {
         $uploadedFile = Input::file('file_data');
 
-        $validationRules = ['max:'.Modules\System\Models\File::getMaxFilesize()];
+        $validationRules = ['max:'.System\Models\File::getMaxFilesize()];
         $validationRules[] = 'mimes:jpg,jpeg,bmp,png';
 
         $validation = Validator::make(
@@ -31,11 +31,11 @@ function processFileUpload()
         if (!$uploadedFile->isValid())
             throw new Exception('File is not valid');
 
-        $file = new Modules\System\Models\File();
+        $file = new System\Models\File();
         $file->data = $uploadedFile;
         $file->save();
 
-        $dish = new Plugins\Responsiv\DishSmith\Models\Dish;
+        $dish = new Responsiv\DishSmith\Models\Dish;
         $dish->photo()->add($file, post('session_key'));
         die('success');
 
@@ -49,12 +49,12 @@ function onSaveDish()
     $user = Auth::getUser();
 
     if (post('dish_id')) {
-        $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
+        $dish = Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
         $dish->ingredients()->detach();
         $dish->save(['name' => post('name')], post('session_key'));
     }
     else {
-        $dish = Plugins\Responsiv\DishSmith\Models\Dish::create([
+        $dish = Responsiv\DishSmith\Models\Dish::create([
                 'name' => post('name'),
                 'user_id' => $user->id
             ], post('session_key'));
@@ -66,14 +66,14 @@ function onSaveDish()
     $ingredients = $this->getIngredients();
 
     foreach ($ingredients as $ingredientData) {
-        $ingredient = Plugins\Responsiv\DishSmith\Models\Ingredient::firstOrCreate(['name' => $ingredientData['name']]);
+        $ingredient = Responsiv\DishSmith\Models\Ingredient::firstOrCreate(['name' => $ingredientData['name']]);
         $dish->ingredients()->attach($ingredient->id, [
             'type' => trim($ingredientData['type']),
             'amount' => trim($ingredientData['amount'])
         ]);
     }
 
-    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
+    $this['dishes'] = Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->get();
 }
 
 function onAddIngredient()
@@ -115,13 +115,13 @@ function onDeleteDish()
         return;
 
     $user = Auth::getUser();
-    $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
+    $dish = Responsiv\DishSmith\Models\Dish::ofUser($user)->find(post('dish_id'));
     if ($dish) {
         $dish->ingredients()->detach();
         $dish->delete();
     }
 
-    $this['dishes'] = Plugins\Responsiv\DishSmith\Models\Dish::ofUser($user)->get();
+    $this['dishes'] = Responsiv\DishSmith\Models\Dish::ofUser($user)->get();
 }
 
 function onModifyDish()
@@ -129,7 +129,7 @@ function onModifyDish()
     if (!post('dish_id'))
         $this->onNewDish();
 
-    $dish = Plugins\Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->find(post('dish_id'));
+    $dish = Responsiv\DishSmith\Models\Dish::ofUser(Auth::getUser())->find(post('dish_id'));
     if ($dish) {
         $this['dish'] = $dish;
         $this['ingredients'] = $dish->getIngredients();
@@ -145,7 +145,7 @@ function onModifyDish()
 
 function onNewDish()
 {
-    $dish = new Plugins\Responsiv\DishSmith\Models\Dish;
+    $dish = new Responsiv\DishSmith\Models\Dish;
     $this['sessionKey'] = post('session_key', uniqid());
 
     $photo = $dish->photo()->withDeferred($this['sessionKey'])->first();
@@ -160,7 +160,7 @@ function onSortDishes()
         $ids = array_keys($sortData);
         $orders = array_values($sortData);
 
-        $dish = new Plugins\Responsiv\DishSmith\Models\Dish;
+        $dish = new Responsiv\DishSmith\Models\Dish;
         $dish->setSortableOrder($ids, $orders);
     }
 
