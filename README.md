@@ -1,7 +1,7 @@
 Dish Smith 2013
 =========
 
-![Screenshot]<https://raw.githubusercontent.com/daftspunk/dishsmith/master/Screenshot.png>
+![Screenshot](https://raw.githubusercontent.com/daftspunk/dishsmith/master/Screenshot.png)
 
 For my wife, Becky :-)
 
