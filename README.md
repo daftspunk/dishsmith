@@ -1,6 +1,8 @@
 Dish Smith 2013
 =========
 
+![Screenshot]<https://raw.githubusercontent.com/daftspunk/dishsmith/master/Screenshot.png>
+
 For my wife, Becky :-)
 
 DishSmith is a meal planner created at [HACT 2013](http://hact.org.au).
