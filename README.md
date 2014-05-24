@@ -5,7 +5,7 @@ Dish Smith 2013
 
 For my wife, Becky :-)
 
-DishSmith is a meal planner created at [HACT 2013](http://hact.org.au) in a 32 hour programming sprint.
+DishSmith is a meal planner created at [HACT 2013](http://hact.org.au) hackathon in a 32 hour programming sprint.
 
 ## What is it?
 
