@@ -5,9 +5,9 @@ Dish Smith 2013
 
 For my wife, Becky :-)
 
-DishSmith is a meal planner created at [HACT 2013](http://hact.org.au).
+DishSmith is a meal planner created at [HACT 2013](http://hact.org.au) in a 32 hour programming sprint.
 
-## What is?
+## What is it?
 
 DishSmith lets you organise your life for eating. It is a meal planner based on the premise that eating right requires either **passion** or **planning**.
 
@@ -21,7 +21,7 @@ DishSmith is made using [October CMS](http://octobercms.com) and [Bootstrap](htt
 
 ## Plugin dependancy
 
-DishSmith comes with its own Plugin for October CMS. 
+DishSmith comes with its own Plugin for October CMS.
 You can find this plugin at the [dishsmith-plugin repo](https://github.com/daftspunk/dishsmith-plugin).
 
 ## Installation
