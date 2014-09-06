@@ -45,9 +45,9 @@
 
   Typeahead.prototype = {
 
-    constructor: Typeahead
+    constructor: Typeahead,
 
-  , select: function () {
+    select: function () {
       var val = this.$menu.find('.active').attr('data-value')
       if(this.autoSelect || val) {
         this.$element
@@ -55,13 +55,13 @@
           .change()
       }
       return this.hide()
-    }
+    },
 
-  , updater: function (item) {
+    updater: function (item) {
       return item
-    }
+    },
 
-  , show: function () {
+    show: function () {
       var pos = $.extend({}, this.$element.position(), {
         height: this.$element[0].offsetHeight
       }), scrollHeight
@@ -80,15 +80,15 @@
 
       this.shown = true
       return this
-    }
+    },
 
-  , hide: function () {
+    hide: function () {
       this.$menu.hide()
       this.shown = false
       return this
-    }
+    },
 
-  , lookup: function (event) {
+    lookup: function (event) {
       var items
 
       this.query = this.$element.val()  || ''
@@ -100,9 +100,9 @@
       items = $.isFunction(this.source) ? this.source(this.query, $.proxy(this.process, this)) : this.source
 
       return items ? this.process(items) : this
-    }
+    },
 
-  , process: function (items) {
+    process: function (items) {
       var that = this
 
       items = $.grep(items, function (item) {
@@ -117,16 +117,16 @@
 
       if (this.options.items == 'all' || this.options.minLength == 0 && !this.$element.val()) {
         return this.render(items).show()
-      } else {  
+      } else {
         return this.render(items.slice(0, this.options.items)).show()
       }
-    }
+    },
 
-  , matcher: function (item) {
+    matcher: function (item) {
       return ~item.toLowerCase().indexOf(this.query.toLowerCase())
-    }
+    },
 
-  , sorter: function (items) {
+    sorter: function (items) {
       var beginswith = []
         , caseSensitive = []
         , caseInsensitive = []
@@ -139,16 +139,16 @@
       }
 
       return beginswith.concat(caseSensitive, caseInsensitive)
-    }
+    },
 
-  , highlighter: function (item) {
+    highlighter: function (item) {
       var query = this.query.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
       return item.replace(new RegExp('(' + query + ')', 'ig'), function ($1, match) {
         return '<strong>' + match + '</strong>'
       })
-    }
+    },
 
-  , render: function (items) {
+    render: function (items) {
       var that = this
 
       items = $(items).map(function (i, item) {
@@ -162,9 +162,9 @@
       }
       this.$menu.html(items)
       return this
-    }
+    },
 
-  , next: function (event) {
+    next: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
         , next = active.next()
 
@@ -173,9 +173,9 @@
       }
 
       next.addClass('active')
-    }
+    },
 
-  , prev: function (event) {
+    prev: function (event) {
       var active = this.$menu.find('.active').removeClass('active')
         , prev = active.prev()
 
@@ -184,9 +184,9 @@
       }
 
       prev.addClass('active')
-    }
+    },
 
-  , listen: function () {
+    listen: function () {
       this.$element
         .on('focus',    $.proxy(this.focus, this))
         .on('blur',     $.proxy(this.blur, this))
@@ -201,18 +201,18 @@
         .on('click', $.proxy(this.click, this))
         .on('mouseenter', 'li', $.proxy(this.mouseenter, this))
         .on('mouseleave', 'li', $.proxy(this.mouseleave, this))
-    }
+    },
 
-  , eventSupported: function(eventName) {
+    eventSupported: function(eventName) {
       var isSupported = eventName in this.$element
       if (!isSupported) {
         this.$element.setAttribute(eventName, 'return;')
         isSupported = typeof this.$element[eventName] === 'function'
       }
       return isSupported
-    }
+    },
 
-  , move: function (e) {
+    move: function (e) {
       if (!this.shown) return
 
       switch(e.keyCode) {
@@ -234,19 +234,19 @@
       }
 
       e.stopPropagation()
-    }
+    },
 
-  , keydown: function (e) {
+    keydown: function (e) {
       this.suppressKeyPressRepeat = ~$.inArray(e.keyCode, [40,38,9,13,27])
       this.move(e)
-    }
+    },
 
-  , keypress: function (e) {
+    keypress: function (e) {
       if (this.suppressKeyPressRepeat) return
       this.move(e)
-    }
+    },
 
-  , keyup: function (e) {
+    keyup: function (e) {
       switch(e.keyCode) {
         case 40: // down arrow
         case 38: // up arrow
@@ -272,34 +272,33 @@
 
       e.stopPropagation()
       e.preventDefault()
-  }
-
-  , focus: function (e) {
+    },
+    focus: function (e) {
       this.focused = true
       if (this.options.minLength == 0 && !this.$element.val() || this.options.matchOnFocus) {
         this.lookup(); 
       }
-    }
+    },
 
-  , blur: function (e) {
+    blur: function (e) {
       this.focused = false
       if (!this.mousedover && this.shown) this.hide()
-    }
+    },
 
-  , click: function (e) {
+    click: function (e) {
       e.stopPropagation()
       e.preventDefault()
       this.select()
       this.$element.focus()
-    }
+    },
 
-  , mouseenter: function (e) {
+    mouseenter: function (e) {
       this.mousedover = true
       this.$menu.find('.active').removeClass('active')
       $(e.currentTarget).addClass('active')
-    }
+    },
 
-  , mouseleave: function (e) {
+    mouseleave: function (e) {
       this.mousedover = false
       if (!this.focused && this.shown) this.hide()
     }
@@ -323,13 +322,13 @@
   }
 
   $.fn.typeahead.defaults = {
-    source: []
-  , items: 8
-  , menu: '<ul class="typeahead dropdown-menu"></ul>'
-  , item: '<li><a href="#"></a></li>'
-  , minLength: 1
-  , scrollHeight: 0
-  , autoSelect: true
+    source: [],
+    items: 8,
+    menu: '<ul class="typeahead dropdown-menu"></ul>',
+    item: '<li><a href="#"></a></li>',
+    minLength: 1,
+    scrollHeight: 0,
+    autoSelect: true
   }
 
   $.fn.typeahead.Constructor = Typeahead
