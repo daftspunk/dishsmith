@@ -1,11 +1,11 @@
 {% set 
     items = {
-        'dish': ['/dishes', 'My Dishes'],
-        'plan': ['/planner', 'Meal Plan'],
-        'shop': ['/shopping', 'Shopping List']
+        'dish': ['dishes', 'My Dishes'],
+        'plan': ['planner', 'Meal Plan'],
+        'shop': ['shopping', 'Shopping List']
     }
 %}
 
 {% for index, item in items %}
-    <li class="{% if index == currentPage %}active{% endif %}"><a href="{{ item[0] }}">{{ item[1] }}</a></li>
+    <li class="{% if index == currentPage %}active{% endif %}"><a href="{{ item[0]|page }}">{{ item[1] }}</a></li>
 {% endfor %}
