@@ -18,7 +18,7 @@ public function onEnter()
 
     $validation = Validator::make(post(), $rules);
     if ($validation->fails())
-        throw new October\Rain\Support\ValidationException($validation);
+        throw new ValidationException($validation);
 
     $user = Auth::findUserByLogin(post('email'));
     if (!$user) {
