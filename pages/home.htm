@@ -33,7 +33,6 @@ public function onEnter()
     // Authenticate user
     $user = Auth::authenticate([
         'email' => post('email'),
-        'login' => post('email'),
         'password' => post('password')
     ], true);
 
